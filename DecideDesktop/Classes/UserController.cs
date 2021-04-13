@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DecideDesktop
 {
@@ -12,15 +13,16 @@ namespace DecideDesktop
         internal static User SignUp(string Address, Dictionary<string, object> UserValues)
         {
             var JsonResult = HTTPClient.SendRequest(Address + "/register", UserValues);
-            Dictionary<string, object> UserData = (Dictionary<string, object>)JsonResult["result"];
+            var userData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["result"].ToString());                         
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                User user = new User(UserData["name"].ToString(), UserData["password"].ToString(), UserData["email"].ToString());
+                User user = new User(userData["name"].ToString(), userData["password"].ToString(), userData["email"].ToString());
                 return user;
             }
             else
             {
+                
                 return null;
             }
         }
