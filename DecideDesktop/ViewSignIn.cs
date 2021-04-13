@@ -125,10 +125,18 @@ namespace DecideDesktop
 
         private void buttonSignInSignIn_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> SignInValues = new Dictionary<string, string>();
-            SignInValues.Add("UserName", textBoxSignInProfile.Text);
-            SignInValues.Add("Password", textBoxSignInPassword.Text);
-            //вызов метода Олега
+            Dictionary<string, object> SignInValues = new Dictionary<string, object>();
+            SignInValues.Add("username", textBoxSignInProfile.Text);
+            SignInValues.Add("password", textBoxSignInPassword.Text);
+
+            if (UserController.LogIn(HTTPClient.Address, ViewSignUp.thisUser))
+            {
+                MessageBox.Show("Вы вошли");
+            }
+            else
+            {
+                MessageBox.Show("Нет, не вошли");
+            }
             
         }
     }

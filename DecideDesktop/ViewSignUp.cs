@@ -13,6 +13,7 @@ namespace DecideDesktop
 {
     public partial class ViewSignUp : Form
     {
+        internal static User thisUser = null;
         public ViewSignUp()
         {
             //hello
@@ -146,11 +147,20 @@ namespace DecideDesktop
 
         private void buttonSignInSignUp_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> SignUpValues = new Dictionary<string, string>();
-            SignUpValues.Add("UserName", textBoxProfileSignUp.Text);
-            SignUpValues.Add("Password", textBoxPasswordSignUp.Text);
-            SignUpValues.Add("EMail", textBoxEmailSignUp.Text);
-            //вызов метода Олега
+            Dictionary<string, object> SignUpValues = new Dictionary<string, object>();
+            SignUpValues.Add("username", textBoxProfileSignUp.Text);
+            SignUpValues.Add("password", textBoxPasswordSignUp.Text);
+            SignUpValues.Add("email", textBoxEmailSignUp.Text);
+
+            thisUser = UserController.SignUp(HTTPClient.Address, SignUpValues);
+            if (thisUser != null)
+            {
+                MessageBox.Show("Успех зарегаться");
+            }
+            else
+            {
+                MessageBox.Show("Неудача зарегаться");
+            }
         }
     }
 }
