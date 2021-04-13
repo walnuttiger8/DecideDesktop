@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DecideDesktop;
 
 namespace DecideDesktop
 {
@@ -125,11 +126,15 @@ namespace DecideDesktop
 
         private void buttonSignInSignIn_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> SignInValues = new Dictionary<string, string>();
-            SignInValues.Add("UserName", textBoxSignInProfile.Text);
-            SignInValues.Add("Password", textBoxSignInPassword.Text);
-            //вызов метода Олега
-            
+            if(Classes.FieldsCheck.UserNameCheck(textBoxSignInProfile.Text) && 
+                Classes.FieldsCheck.PasswordCheck(textBoxSignInPassword.Text))
+            {
+                Dictionary<string, string> SignInValues = new Dictionary<string, string>();
+                SignInValues.Add("UserName", textBoxSignInProfile.Text);
+                SignInValues.Add("Password", textBoxSignInPassword.Text);
+                //вызов метода Олега
+            }
+
         }
     }
 }
