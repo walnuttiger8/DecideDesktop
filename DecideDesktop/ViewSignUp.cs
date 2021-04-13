@@ -146,11 +146,16 @@ namespace DecideDesktop
 
         private void buttonSignInSignUp_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> SignUpValues = new Dictionary<string, string>();
-            SignUpValues.Add("UserName", textBoxProfileSignUp.Text);
-            SignUpValues.Add("Password", textBoxPasswordSignUp.Text);
-            SignUpValues.Add("EMail", textBoxEmailSignUp.Text);
-            //вызов метода Олега
+            if(Classes.FieldsCheck.UserNameCheck(textBoxProfileSignUp.Text)
+                && Classes.FieldsCheck.PasswordCheck(textBoxPasswordSignUp.Text) 
+                    && Classes.FieldsCheck.EMailCheck(textBoxEmailSignUp.Text))
+            {
+                Dictionary<string, string> SignUpValues = new Dictionary<string, string>();
+                SignUpValues.Add("UserName", textBoxProfileSignUp.Text);
+                SignUpValues.Add("Password", textBoxPasswordSignUp.Text);
+                SignUpValues.Add("EMail", textBoxEmailSignUp.Text);
+                //вызов метода Олега
+            }
         }
     }
 }
