@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\UserController.cs" />
     <Compile Include="ViewSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,20 +66,17 @@
     <Compile Include="Classes\HTTPClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <EmbeddedResource Include="ViewSignIn.resx">
       <DependentUpon>ViewSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewSignUp.resx">
       <DependentUpon>ViewSignUp.cs</DependentUpon>
     </EmbeddedResource>
-    
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -128,8 +127,6 @@
   <ItemGroup>
     <None Include="Resources\vk1-yrllow.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
