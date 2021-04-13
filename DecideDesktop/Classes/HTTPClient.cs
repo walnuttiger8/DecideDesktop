@@ -10,6 +10,7 @@ namespace DecideDesktop
 {
     internal static class HTTPClient
     {
+        internal const string Address = "http://127.0.0.1:5000";
         internal static Dictionary<string, object> SendRequest(string Address, Dictionary<string, object> Dictionary)
         {
             string Result = "";

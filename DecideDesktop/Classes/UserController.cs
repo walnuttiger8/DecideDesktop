@@ -14,8 +14,15 @@ namespace DecideDesktop
             var JsonResult = HTTPClient.SendRequest(Address + "/register", UserValues);
             Dictionary<string, object> UserData = (Dictionary<string, object>)JsonResult["result"];
 
-            User user = new User(UserData["name"].ToString(), UserData["password"].ToString(), UserData["email"].ToString());
-            return user;
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                User user = new User(UserData["name"].ToString(), UserData["password"].ToString(), UserData["email"].ToString());
+                return user;
+            }
+            else
+            {
+                return null;
+            }
         }
         internal static bool LogIn(string Address, User user) //вход
         {
@@ -23,7 +30,6 @@ namespace DecideDesktop
             {
                 {"name", user.Name },
                 {"password", user.Password },
-                {"email", user.Email }
             };
             var JsonResult = HTTPClient.SendRequest(Address + "/login", UserData);
 
