@@ -46,27 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ViewSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ViewSignIn.Designer.cs">
+      <DependentUpon>ViewSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewSignUp.Designer.cs">
+      <DependentUpon>ViewSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ViewSignIn.resx">
+      <DependentUpon>ViewSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewSignUp.resx">
+      <DependentUpon>ViewSignUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -75,6 +88,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_email_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pass_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile_whitesmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\email_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inst1-yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\google-yellow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vk1-yrllow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
