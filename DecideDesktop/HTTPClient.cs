@@ -1,60 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
+using System.Web;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Server
 {
-    static class HTTPClient
+    internal static class HTTPClient
     {
-        internal static HttpClient httpClient = new HttpClient();
-        internal static async void GetRequest(string Address)
+        internal static Dictionary<string, object> SendRequest(string Address, Dictionary<string, object> Dictionary)
         {
-            using (httpClient)
-            {
-                using (var response = await httpClient.GetAsync(Address))
-                {
-                    using (HttpContent SiteContent = response.Content)
-                    {
-                        var content = await SiteContent.ReadAsStringAsync();
-                        Console.WriteLine(content);
-                    }
-                }
-            }
-        }
+            string Result = "";
+            dynamic JsonObject = JsonConvert.SerializeObject(Dictionary);
 
-        internal static async void PostRequest(string Address, Dictionary<string, string> RequestData)
-        {
-            using (httpClient)
-            {
-                using (HttpContent RequestContent = new FormUrlEncodedContent(RequestData))
-                {
-                    using (var response = await httpClient.PostAsync(Address, RequestContent))
-                    {
-                        Console.WriteLine(response.Headers);
-                        Console.WriteLine(response.StatusCode);
-                        Console.WriteLine(response.RequestMessage);
-                    }
-                }         
-            }
-        }
+            byte[] byteArray = Encoding.UTF8.GetBytes(JsonObject.ToString());
 
-        internal static async void PostRequest(string Address, string RequestData)
-        {
-            using (httpClient)
+            WebRequest Request = WebRequest.Create(Address);
+            Request.Method = "POST";
+            Request.ContentType = "application/json";
+            Request.ContentLength = byteArray.Length;
+
+            using (Stream dataStream = Request.GetRequestStream())
             {
-                using (StringContent RequestContent = new StringContent(RequestData, Encoding.UTF8))
-                {
-                    using (var response = await httpClient.PostAsync(Address, RequestContent))
-                    {
-                        Console.WriteLine(response.Headers);
-                        Console.WriteLine(response.StatusCode);
-                        Console.WriteLine(response.RequestMessage);
-                    }
-                }
+                dataStream.Write(byteArray, 0, byteArray.Length);
             }
+            HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+
+            using (StreamReader streamReader = new StreamReader(Response.GetResponseStream()))
+            {
+                Result = streamReader.ReadToEnd();
+            }
+
+            dynamic JsonDeserializedObject = JsonConvert.DeserializeObject<Dictionary<string, object>>(Result);
+            return JsonDeserializedObject;
         }
     }
 }
