@@ -17,7 +17,7 @@ namespace DecideDesktop
             User user = new User(UserData["name"].ToString(), UserData["password"].ToString(), UserData["email"].ToString());
             return user;
         }
-        internal static bool LogIn(string Address, User user)
+        internal static bool LogIn(string Address, User user) //вход
         {
             Dictionary<string, object> UserData = new Dictionary<string, object>
             {

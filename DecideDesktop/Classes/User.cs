@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DecideDesktop
 {
-    internal class User
+    internal class User //класс пользователя
     {
         internal string Name { get; set; }
         internal string Password { get; set; }
