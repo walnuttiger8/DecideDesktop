@@ -160,6 +160,7 @@ namespace DecideDesktop
             else
             {
                 MessageBox.Show("Неудача зарегаться");
+
             }
         }
     }
