@@ -61,16 +61,17 @@
     <Compile Include="ViewSignUp.Designer.cs">
       <DependentUpon>ViewSignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="HTTPClient.cs" />
+    <Compile Include="Classes\HTTPClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
     <EmbeddedResource Include="ViewSignIn.resx">
       <DependentUpon>ViewSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewSignUp.resx">
       <DependentUpon>ViewSignUp.cs</DependentUpon>
-
     </EmbeddedResource>
+    
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
