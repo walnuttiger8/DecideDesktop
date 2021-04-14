@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DecideDesktop;
+using DecideDesktop.Classes;
 
 namespace DecideDesktop
 {
     public partial class ViewSignUp : Form
     {
-        internal static User thisUser = null;
+        internal static int thisUserId = 0;
         public ViewSignUp()
         {
             //hello
@@ -163,8 +164,8 @@ namespace DecideDesktop
                 SignUpValues.Add("password", textBoxPasswordSignUp.Text);
                 SignUpValues.Add("email", textBoxEmailSignUp.Text);
 
-                thisUser = UserController.SignUp(HTTPClient.Address, SignUpValues);
-                if (thisUser != null)
+                thisUserId = UserController.SignUp(HTTPClient.Address, SignUpValues);
+                if (thisUserId != 0)
                 {
                     MessageBox.Show("Успех зарегаться");
                 }

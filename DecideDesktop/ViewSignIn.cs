@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DecideDesktop;
+using DecideDesktop.Classes;
 
 namespace DecideDesktop
 {
@@ -141,14 +142,7 @@ namespace DecideDesktop
                 SignInValues.Add("username", textBoxSignInProfile.Text);
                 SignInValues.Add("password", textBoxSignInPassword.Text);
 
-                if (UserController.LogIn(HTTPClient.Address, ViewSignUp.thisUser))
-                {
-                    MessageBox.Show("Вы вошли");
-                }
-                else
-                {
-                    MessageBox.Show("Нет, не вошли");
-                }
+                int userId = UserController.LogIn(HTTPClient.Address, SignInValues);
             }
    
         }
