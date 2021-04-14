@@ -47,6 +47,7 @@ namespace DecideDesktop
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.panelLocation = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picProfSignIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPassSignIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picVKSignIn)).BeginInit();
@@ -228,7 +229,7 @@ namespace DecideDesktop
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(333, 6);
+            this.label1.Location = new System.Drawing.Point(335, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 22);
             this.label1.TabIndex = 17;
@@ -237,13 +238,27 @@ namespace DecideDesktop
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(150, 41);
+            this.button1.Location = new System.Drawing.Point(127, 135);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panelLocation
+            // 
+            this.panelLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelLocation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLocation.Location = new System.Drawing.Point(0, 0);
+            this.panelLocation.Name = "panelLocation";
+            this.panelLocation.Size = new System.Drawing.Size(361, 35);
+            this.panelLocation.TabIndex = 19;
+            this.panelLocation.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLocation_Paint);
+            this.panelLocation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelLocation_MouseClick);
+            this.panelLocation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelLocation_MouseDown);
+            this.panelLocation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelLocation_MouseMove);
+            this.panelLocation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelLocation_MouseUp);
             // 
             // ViewSignIn
             // 
@@ -265,8 +280,10 @@ namespace DecideDesktop
             this.Controls.Add(this.panelProfileSignIn);
             this.Controls.Add(this.textBoxSignInProfile);
             this.Controls.Add(this.picProfSignIn);
+            this.Controls.Add(this.panelLocation);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewSignIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вход";
@@ -299,5 +316,6 @@ namespace DecideDesktop
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panelLocation;
     }
 }

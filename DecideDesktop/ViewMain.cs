@@ -12,7 +12,7 @@ namespace DecideDesktop
 {
     public partial class ViewMain : Form
     {
-        
+        public static ViewSignIn SignIn = new ViewSignIn();
         public ViewMain()
         {
             InitializeComponent();
@@ -111,7 +111,8 @@ namespace DecideDesktop
 
         private void picExit_Click(object sender, EventArgs e)
         {
-            
+            SignIn.Visible = true;
+            this.Close();
             
         }
 
@@ -123,22 +124,22 @@ namespace DecideDesktop
 
         private void button2_MouseMove(object sender, MouseEventArgs e)
         {
-            button2.ForeColor = Color.FromArgb(215, 179, 6);
+            btnMainView.ForeColor = Color.FromArgb(215, 179, 6);
         }
 
         private void button3_MouseMove(object sender, MouseEventArgs e)
         {
-            button3.ForeColor = Color.FromArgb(215, 179, 6);
+            btnProfileView.ForeColor = Color.FromArgb(215, 179, 6);
         }
 
         private void button4_MouseMove(object sender, MouseEventArgs e)
         {
-            button4.ForeColor = Color.FromArgb(215, 179, 6);
+            btnHistoryView.ForeColor = Color.FromArgb(215, 179, 6);
         }
 
         private void button8_MouseMove(object sender, MouseEventArgs e)
         {
-            button8.ForeColor = Color.FromArgb(215, 179, 6);
+            btnSettingsView.ForeColor = Color.FromArgb(215, 179, 6);
         }
 
         private void btnCurrency_MouseMove(object sender, MouseEventArgs e)
@@ -148,17 +149,17 @@ namespace DecideDesktop
 
         private void button5_MouseMove(object sender, MouseEventArgs e)
         {
-            button5.ForeColor = Color.FromArgb(215, 179, 6);
+            btnBTCcurrency.ForeColor = Color.FromArgb(215, 179, 6);
         }
 
         private void button6_MouseMove(object sender, MouseEventArgs e)
         {
-            button6.ForeColor = Color.FromArgb(215, 179, 6);
+            btnETHcurrency.ForeColor = Color.FromArgb(215, 179, 6);
         }
 
         private void button7_MouseMove(object sender, MouseEventArgs e)
         {
-            button7.ForeColor = Color.FromArgb(215, 179, 6);
+            btnLTCcurrency.ForeColor = Color.FromArgb(215, 179, 6);
         }
 
         private void btmMenu_MouseLeave(object sender, EventArgs e)
@@ -168,22 +169,22 @@ namespace DecideDesktop
 
         private void button2_MouseLeave(object sender, EventArgs e)
         {
-            button2.ForeColor = Color.White;
+            btnMainView.ForeColor = Color.White;
         }
 
         private void button3_MouseLeave(object sender, EventArgs e)
         {
-            button3.ForeColor = Color.White;
+            btnProfileView.ForeColor = Color.White;
         }
 
         private void button4_MouseLeave(object sender, EventArgs e)
         {
-            button4.ForeColor = Color.White;
+            btnHistoryView.ForeColor = Color.White;
         }
 
         private void button8_MouseLeave(object sender, EventArgs e)
         {
-            button8.ForeColor = Color.White;
+            btnSettingsView.ForeColor = Color.White;
         }
 
         private void btnCurrency_MouseLeave(object sender, EventArgs e)
@@ -193,17 +194,17 @@ namespace DecideDesktop
 
         private void button5_MouseLeave(object sender, EventArgs e)
         {
-            button5.ForeColor = Color.White;
+            btnBTCcurrency.ForeColor = Color.White;
         }
 
         private void button6_MouseLeave(object sender, EventArgs e)
         {
-            button6.ForeColor = Color.White;
+            btnETHcurrency.ForeColor = Color.White;
         }
 
         private void button7_MouseLeave(object sender, EventArgs e)
         {
-            button7.ForeColor = Color.White;
+            btnLTCcurrency.ForeColor = Color.White;
         }
 
         private void picExit_MouseMove(object sender, MouseEventArgs e)
