@@ -49,11 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Coin.cs" />
     <Compile Include="Classes\FieldsCheck.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserController.cs" />
+    <Compile Include="Classes\Wallet.cs" />
     <Compile Include="ViewSignIn.cs">
-      
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewSignIn.Designer.cs">
