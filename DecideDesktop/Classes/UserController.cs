@@ -6,48 +6,82 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DecideDesktop
+namespace DecideDesktop.Classes
 {
     internal static class UserController
     {
-        internal static User SignUp(string Address, Dictionary<string, object> UserValues)
+        internal static int SignUp(string Address, Dictionary<string, object> UserValues)
         {
             var JsonResult = HTTPClient.SendRequest(Address + "/register", UserValues);
-            var userData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["result"].ToString());                         
+            var userData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                User user = new User(userData["name"].ToString(), userData["password"].ToString(), userData["email"].ToString());
-                return user;
+                int userId = Convert.ToInt32(userData["user_id"]);
+                return userId;
             }
             else
             {
-                
+                MessageBox.Show(JsonResult["message"].ToString());
+                return 0;
+            }
+        }
+        internal static int LogIn(string Address, Dictionary<string, object> UserValues)
+        {
+            var JsonResult = HTTPClient.SendRequest(Address + "/login", UserValues);
+            var userData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                int userId = Convert.ToInt32(userData["user_id"]);
+                return userId;
+            }
+            else
+            {
+                MessageBox.Show(JsonResult["message"].ToString());
+                return 0;
+            }
+        }
+
+        internal static User GetUser(string Address, int userId)
+        {
+            Dictionary<string, object> userIdData = new Dictionary<string, object>
+            {
+                {"user_id", userId }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(Address + "/get_user", userIdData);
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                var thisUser = JsonConvert.DeserializeObject<User>(JsonResult["results"].ToString());
+                return thisUser;
+            }
+            else
+            {
+                MessageBox.Show(JsonResult["message"].ToString());
                 return null;
             }
         }
-        internal static bool LogIn(string Address, User user) //вход
+
+        internal static List<Wallet> GetWallets(string Address, int userId)
         {
-            Dictionary<string, object> UserData = new Dictionary<string, object>
+            Dictionary<string, object> userIdData = new Dictionary<string, object>
             {
-                {"name", user.Name },
-                {"password", user.Password },
+                {"user_id", userId }
             };
-            var JsonResult = HTTPClient.SendRequest(Address + "/login", UserData);
 
-            int Success = Convert.ToInt32(JsonResult["success"]);
+            var JsonResult = HTTPClient.SendRequest(Address + "/get_wallets", userIdData);
 
-            if (Success == 1)
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                return true;
-            }
-            else if (Success == 0)
-            {
-                return false;
+                List<Wallet> wallets = JsonConvert.DeserializeObject<List<Wallet>>(JsonResult["results"].ToString());
+                return wallets;
             }
             else
             {
-                return false;
+                MessageBox.Show(JsonResult["message"].ToString());
+                return null;
             }
         }
     }

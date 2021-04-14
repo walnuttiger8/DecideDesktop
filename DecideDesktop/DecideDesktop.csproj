@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Coin.cs" />
     <Compile Include="Classes\FieldsCheck.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserController.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="ViewMain.Designer.cs">
       <DependentUpon>ViewMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Wallet.cs" />
+
     <Compile Include="ViewSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
