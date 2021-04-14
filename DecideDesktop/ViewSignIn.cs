@@ -49,6 +49,7 @@ namespace DecideDesktop
 
         private void ViewSignIn_Load(object sender, EventArgs e)
         {
+            
             ViewSignUp.SignIn = this;
             SignUp.Show();
         }
@@ -126,19 +127,29 @@ namespace DecideDesktop
 
         private void buttonSignInSignIn_Click(object sender, EventArgs e)
         {
-            Dictionary<string, object> SignInValues = new Dictionary<string, object>();
-            SignInValues.Add("username", textBoxSignInProfile.Text);
-            SignInValues.Add("password", textBoxSignInPassword.Text);
+            if(Classes.FieldsCheck.UserNameCheck(textBoxSignInProfile.Text) &&
+                Classes.FieldsCheck.PasswordCheck(textBoxSignInPassword.Text))
+            {
+                Dictionary<string, object> SignInValues = new Dictionary<string, object>();
+                SignInValues.Add("username", textBoxSignInProfile.Text);
+                SignInValues.Add("password", textBoxSignInPassword.Text);
 
-            if (UserController.LogIn(HTTPClient.Address, ViewSignUp.thisUser))
-            {
-                MessageBox.Show("Вы вошли");
-            }
-            else
-            {
-                MessageBox.Show("Нет, не вошли");
+                if (UserController.LogIn(HTTPClient.Address, ViewSignUp.thisUser))
+                {
+                    MessageBox.Show("Вы вошли");
+                }
+                else
+                {
+                    MessageBox.Show("Нет, не вошли");
+                }
             }
    
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ViewMain m = new ViewMain();
+            m.Show();
         }
     }
 }
