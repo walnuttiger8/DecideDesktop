@@ -81,26 +81,33 @@ namespace DecideDesktop
             timer1.Start();
         }
 
+        int forTimer = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            forTimer += 1;
             SignIn.Left += 10;
-            if (SignIn.Left >= 860)
+            
+            if (forTimer == 36)
             {
                 timer1.Stop();
+                
                 this.TopMost = false;
                 SignIn.TopMost = true;
                 timer2.Start();
             }
-        }
 
+        }
+        
         private void timer2_Tick(object sender, EventArgs e)
         {
+            forTimer -= 1;
             SignIn.Left -= 10;
-            if (SignIn.Left <= 510)
+            if (forTimer == 0)
             {
                 timer2.Stop();
-
+                
             }
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -147,21 +154,58 @@ namespace DecideDesktop
 
         private void buttonSignInSignUp_Click(object sender, EventArgs e)
         {
-            Dictionary<string, object> SignUpValues = new Dictionary<string, object>();
-            SignUpValues.Add("username", textBoxProfileSignUp.Text);
-            SignUpValues.Add("password", textBoxPasswordSignUp.Text);
-            SignUpValues.Add("email", textBoxEmailSignUp.Text);
-
-            thisUser = UserController.SignUp(HTTPClient.Address, SignUpValues);
-            if (thisUser != null)
+            if(Classes.FieldsCheck.UserNameCheck(textBoxProfileSignUp.Text) &&
+                Classes.FieldsCheck.PasswordCheck(textBoxPasswordSignUp.Text) &&
+                    Classes.FieldsCheck.EMailCheck(textBoxEmailSignUp.Text))
             {
-                MessageBox.Show("Успех зарегаться");
-            }
-            else
-            {
-                MessageBox.Show("Неудача зарегаться");
+                Dictionary<string, object> SignUpValues = new Dictionary<string, object>();
+                SignUpValues.Add("username", textBoxProfileSignUp.Text);
+                SignUpValues.Add("password", textBoxPasswordSignUp.Text);
+                SignUpValues.Add("email", textBoxEmailSignUp.Text);
 
+                thisUser = UserController.SignUp(HTTPClient.Address, SignUpValues);
+                if (thisUser != null)
+                {
+                    MessageBox.Show("Успех зарегаться");
+                }
+                else
+                {
+                    MessageBox.Show("Неудача зарегаться");
+
+                }
             }
+        }
+        private bool isMousePress = false;
+        private Point _clickPoint;
+        private Point _formStartPoint;
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMousePress = true;
+            _clickPoint = Cursor.Position;
+            _formStartPoint = Location;
+            SignIn.Location = this.Location;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMousePress)
+            {
+                var cursorOffsetPoint = new Point( //считаем смещение курсора от старта
+                    Cursor.Position.X - _clickPoint.X,
+                    Cursor.Position.Y - _clickPoint.Y);
+
+                Location = new Point( //смещаем форму от начальной позиции в соответствии со смещением курсора
+                    _formStartPoint.X + cursorOffsetPoint.X,
+                    _formStartPoint.Y + cursorOffsetPoint.Y);
+                SignIn.Location = this.Location;
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMousePress = false;
+            _clickPoint = Point.Empty;
+            SignIn.Location = this.Location;
         }
     }
 }

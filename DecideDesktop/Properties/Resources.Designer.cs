@@ -73,6 +73,46 @@ namespace DecideDesktop.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exit {
+            get {
+                object obj = ResourceManager.GetObject("exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_grey {
+            get {
+                object obj = ResourceManager.GetObject("exit_grey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_white {
+            get {
+                object obj = ResourceManager.GetObject("exit_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_yellow {
+            get {
+                object obj = ResourceManager.GetObject("exit_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap google_yellow1 {
             get {
                 object obj = ResourceManager.GetObject("google-yellow1", resourceCulture);
@@ -96,6 +136,16 @@ namespace DecideDesktop.Properties {
         internal static System.Drawing.Bitmap inst1_yellow {
             get {
                 object obj = ResourceManager.GetObject("inst1-yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainProfile {
+            get {
+                object obj = ResourceManager.GetObject("MainProfile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

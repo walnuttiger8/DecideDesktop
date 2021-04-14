@@ -53,7 +53,14 @@
     <Compile Include="Classes\FieldsCheck.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserController.cs" />
+    <Compile Include="ViewMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewMain.Designer.cs">
+      <DependentUpon>ViewMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Wallet.cs" />
+
     <Compile Include="ViewSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +76,9 @@
     <Compile Include="Classes\HTTPClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ViewMain.resx">
+      <DependentUpon>ViewMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewSignIn.resx">
       <DependentUpon>ViewSignIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +93,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -130,6 +141,20 @@
   <ItemGroup>
     <None Include="Resources\vk1-yrllow.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\MainProfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_yellow.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

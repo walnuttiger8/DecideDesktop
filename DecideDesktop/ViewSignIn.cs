@@ -16,6 +16,7 @@ namespace DecideDesktop
         public ViewSignIn()
         {
             InitializeComponent();
+            this.MouseClick += panelLocation_MouseClick;
         }
 
         ViewSignUp SignUp = new ViewSignUp();
@@ -24,33 +25,40 @@ namespace DecideDesktop
         {
             timer1.Start();
         }
-
+        int forTimer = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            forTimer += 1;
             SignUp.Left += 10;
-            if(SignUp.Left>=860)
+           
+            if (forTimer == 36)
             {
                 timer1.Stop();
+
                 this.TopMost = false;
                 SignUp.TopMost = true;
                 timer2.Start();
             }
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            forTimer -= 1;
             SignUp.Left -= 10;
-            if(SignUp.Left<=510)
+            if (forTimer == 0)
             {
                 timer2.Stop();
-
             }
+
         }
 
         private void ViewSignIn_Load(object sender, EventArgs e)
         {
+            ViewMain.SignIn = this;
             ViewSignUp.SignIn = this;
             SignUp.Show();
+            
         }
 
         private void textBoxSignInProfile_Click(object sender, EventArgs e)
@@ -126,19 +134,73 @@ namespace DecideDesktop
 
         private void buttonSignInSignIn_Click(object sender, EventArgs e)
         {
-            Dictionary<string, object> SignInValues = new Dictionary<string, object>();
-            SignInValues.Add("username", textBoxSignInProfile.Text);
-            SignInValues.Add("password", textBoxSignInPassword.Text);
+            if(Classes.FieldsCheck.UserNameCheck(textBoxSignInProfile.Text) &&
+                Classes.FieldsCheck.PasswordCheck(textBoxSignInPassword.Text))
+            {
+                Dictionary<string, object> SignInValues = new Dictionary<string, object>();
+                SignInValues.Add("username", textBoxSignInProfile.Text);
+                SignInValues.Add("password", textBoxSignInPassword.Text);
 
-            if (UserController.LogIn(HTTPClient.Address, ViewSignUp.thisUser))
-            {
-                MessageBox.Show("Вы вошли");
-            }
-            else
-            {
-                MessageBox.Show("Нет, не вошли");
+                if (UserController.LogIn(HTTPClient.Address, ViewSignUp.thisUser))
+                {
+                    MessageBox.Show("Вы вошли");
+                }
+                else
+                {
+                    MessageBox.Show("Нет, не вошли");
+                }
             }
    
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ViewMain m = new ViewMain();
+            m.Show();
+            this.Visible = false;
+        }
+
+        private void panelLocation_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void panelLocation_MouseClick(object sender, MouseEventArgs e)
+        {
+            //this.Location = new Point(Cursor.Position.X - ClientSize.Width / 2, Cursor.Position.Y - ClientSize.Height / 2);
+
+        }
+        private bool isMousePress = false;
+        private Point _clickPoint;
+        private Point _formStartPoint;
+        private void panelLocation_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMousePress = true;
+            _clickPoint = Cursor.Position;
+            _formStartPoint = Location;
+            SignUp.Location = this.Location;
+        }
+
+        private void panelLocation_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMousePress)
+            {
+                var cursorOffsetPoint = new Point( //считаем смещение курсора от старта
+                    Cursor.Position.X - _clickPoint.X,
+                    Cursor.Position.Y - _clickPoint.Y);
+
+                Location = new Point( //смещаем форму от начальной позиции в соответствии со смещением курсора
+                    _formStartPoint.X + cursorOffsetPoint.X,
+                    _formStartPoint.Y + cursorOffsetPoint.Y);
+                SignUp.Location = this.Location;
+            }
+        }
+
+        private void panelLocation_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMousePress = false;
+            _clickPoint = Point.Empty;
+            SignUp.Location = this.Location;
         }
     }
 }
