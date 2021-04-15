@@ -22,33 +22,33 @@ namespace DecideDesktop
    
         private void label1_Click(object sender, EventArgs e)
         {
-            if (comboBoxChoiseCurrency.SelectedItem.Equals("BTC"))
+            if (comboBoxChoiseCurrency.SelectedItem.Equals("BTCUSDT"))
             {
                 var BTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "BTCUSDT", ViewMain.userId));
                 BTCPanel.Name = "BTCPanel";
                 WalletsPanel.Add(BTCPanel);
-                comboBoxChoiseCurrency.Items.Remove("BTC");
+                comboBoxChoiseCurrency.Items.Remove("BTCUSDT");
             }
-            else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETH"))
+            else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETHUSDT"))
             {
                 var ETHPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "ETHUSDT", ViewMain.userId));
                 ETHPanel.Name = "ETHPanel";
                 WalletsPanel.Add(ETHPanel);
-                comboBoxChoiseCurrency.Items.Remove("ETH");
+                comboBoxChoiseCurrency.Items.Remove("ETHUSDT");
             }
-            else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTC"))
+            else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTCUSDT"))
             {
                 var LTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "LTCUSDT", ViewMain.userId));
                 LTCPanel.Name = "LTCPanel";
                 WalletsPanel.Add(LTCPanel);
-                comboBoxChoiseCurrency.Items.Remove("LTC");
+                comboBoxChoiseCurrency.Items.Remove("LTCUSDT");
             }
-            else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRP"))
+            else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRPUSDT"))
             {
                 var XRPPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "XRPUSDT", ViewMain.userId));
                 XRPPanel.Name = "LTCPanel";
                 WalletsPanel.Add(XRPPanel);
-                comboBoxChoiseCurrency.Items.Remove("LTC");
+                comboBoxChoiseCurrency.Items.Remove("XRPUSDT");
             }            
         }
 
@@ -124,6 +124,20 @@ namespace DecideDesktop
             panelLine.BackColor = Color.White;
             BTCpanel.Controls.Add(panelLine);
             return BTCpanel;
+        }
+
+        private void FormProfile_Load(object sender, EventArgs e)
+        {
+            List<Wallet> wallets = UserController.GetWallets(HTTPClient.Address, ViewMain.userId);
+            if (wallets.Count != 0)
+            {
+                foreach (Wallet wallet in wallets)
+                {
+                    createWallet(wallet);
+                    comboBoxChoiseCurrency.Items.Remove(wallet.Coin.Symbol);
+                }
+            }
+            labelUserBalance.Text += $" {ViewMain.thisUser.Balance}$";
         }
     }
 }

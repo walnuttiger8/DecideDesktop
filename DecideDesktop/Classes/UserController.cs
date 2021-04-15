@@ -54,11 +54,12 @@ namespace DecideDesktop.Classes
 
             var JsonResult = HTTPClient.SendRequest(Address + "/get_user", userIdData);
 
-            var UserData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["result"].ToString());
+            var UserData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                return User.FromJson(UserData);
+                User user = User.FromJson(UserData);
+                return user;
             }
             else
             {
@@ -69,7 +70,7 @@ namespace DecideDesktop.Classes
 
         internal static List<Wallet> GetWallets(string Address, int userId)
         {
-            List<Wallet> UserWallets = null;
+            List<Wallet> UserWallets = new List<Wallet>();
             Dictionary<string, object> userIdData = new Dictionary<string, object>
             {
                 {"user_id", userId }
@@ -106,11 +107,12 @@ namespace DecideDesktop.Classes
 
             var JsonResult = HTTPClient.SendRequest(Address + "/get_wallet", UserDict);
 
-            var wallet = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+            var WalletDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                return Wallet.FromJson(wallet);
+                Wallet wallet = Wallet.FromJson(WalletDict);
+                return wallet;
             }
             else
             {
@@ -167,7 +169,7 @@ namespace DecideDesktop.Classes
 
         internal static List<Trade> GetTrades(string Address, int userId)
         {
-            List<Trade> TradesList = null;
+            List<Trade> TradesList = new List<Trade>();
             Dictionary<string, object> userIdDict = new Dictionary<string, object>()
             {
                 {"user_id" , userId }
@@ -214,7 +216,7 @@ namespace DecideDesktop.Classes
 
         internal static List<float> GetChartData(string Address, string Symbol)
         {
-            List<float> ChartData = null;
+            List<float> ChartData = new List<float>();
             Dictionary<string, object> CoinDict = new Dictionary<string, object>()
             {
                 {"symbol", Symbol }

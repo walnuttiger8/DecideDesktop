@@ -15,8 +15,8 @@ namespace DecideDesktop
     {
         public static ViewSignIn SignIn = new ViewSignIn();
         public static ViewSignUp SignUp = new ViewSignUp();
-        internal static int userId = 0;
-        internal static User thisUser = null;
+        internal static int userId;
+        internal static User thisUser;
         public ViewMain()
         {
             InitializeComponent();
@@ -224,25 +224,16 @@ namespace DecideDesktop
         }
 
         private void ViewMain_Load(object sender, EventArgs e)
-        {
+        {    
+            if (userId != 0)
+            {
+                labelUsername.Text = thisUser.Name;
+            }
+
+            openChildForm(new FormMain());
             showSubMenu(panelMenuSubmenu);
             showSubMenu(panelCurrencySubmenu);
             FormProfile.ViewMain = this;
-
-            openChildForm(new FormMain());
-            
-            if (userId != 0)
-            {
-                thisUser = UserController.GetUser(HTTPClient.Address, userId);
-                labelUsername.Text = thisUser.Name;
-                List<Trade> userTrades = UserController.GetTrades(HTTPClient.Address, userId);
-
-                foreach (Trade trade in userTrades)
-                {
-                    richTextBox1.Text += $"Кэш от транзакции: {trade.Price}$, количество монет: {trade.Amount}, кошелек {trade.Wallet.Coin.Symbol}, время транзакции: {trade.Time}, тип: {trade.Transaction}"
-                        + System.Environment.NewLine;
-                }
-            }
         }
         private Form activeForm = null;
         private void openChildForm(Form childForm)
@@ -257,8 +248,6 @@ namespace DecideDesktop
             panelFill.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            
-
         }
 
         private void ViewMain_FormClosing(object sender, FormClosingEventArgs e)

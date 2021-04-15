@@ -145,14 +145,14 @@ namespace DecideDesktop
                 };
 
                 int userId = UserController.LogIn(HTTPClient.Address, SignInValues);
-                if (userId.Equals(1))
-                {
-                    ViewMain viewMain = new ViewMain();
-                    viewMain.Show();
-                    ViewMain.userId = userId;
-                    this.Visible = false;
-                    SignUp.Visible = false;
-                }
+                ViewMain.userId = userId;
+                ViewMain.thisUser = UserController.GetUser(HTTPClient.Address, userId);
+
+                ViewMain viewMain = new ViewMain();
+
+                viewMain.Show();
+                this.Visible = false;
+                SignUp.Visible = false;           
             }
         }
 

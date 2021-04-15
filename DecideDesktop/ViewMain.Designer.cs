@@ -48,8 +48,8 @@ namespace DecideDesktop
             this.picExit = new System.Windows.Forms.PictureBox();
             this.picProfile = new System.Windows.Forms.PictureBox();
             this.panelBottom = new System.Windows.Forms.Panel();
-            this.panelFill = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.panelFill = new System.Windows.Forms.Panel();
             this.panelSidePart.SuspendLayout();
             this.panelCurrencySubmenu.SuspendLayout();
             this.panelMenuSubmenu.SuspendLayout();
@@ -355,6 +355,14 @@ namespace DecideDesktop
             this.panelBottom.Size = new System.Drawing.Size(934, 164);
             this.panelBottom.TabIndex = 5;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(228, 13);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(694, 139);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
             // panelFill
             // 
             this.panelFill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -365,14 +373,6 @@ namespace DecideDesktop
             this.panelFill.Name = "panelFill";
             this.panelFill.Size = new System.Drawing.Size(712, 426);
             this.panelFill.TabIndex = 6;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(228, 13);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(694, 139);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
             // 
             // ViewMain
             // 
@@ -424,6 +424,6 @@ namespace DecideDesktop
         private System.Windows.Forms.Panel panelBottom;
         private System.Windows.Forms.Panel panelFill;
         private System.Windows.Forms.Button btnXRP;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

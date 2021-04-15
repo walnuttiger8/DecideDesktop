@@ -33,11 +33,12 @@ namespace DecideDesktop
             this.labelAddCurrency = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelTemp = new System.Windows.Forms.Panel();
-            this.panelFill = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelFill = new System.Windows.Forms.Panel();
             this.labelWalletHavent = new System.Windows.Forms.Label();
+            this.labelUserBalance = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelTemp.SuspendLayout();
             this.panelFill.SuspendLayout();
@@ -52,10 +53,10 @@ namespace DecideDesktop
             this.comboBoxChoiseCurrency.ForeColor = System.Drawing.Color.White;
             this.comboBoxChoiseCurrency.FormattingEnabled = true;
             this.comboBoxChoiseCurrency.Items.AddRange(new object[] {
-            "BTC",
-            "ETH",
-            "LTC",
-            "XRP"});
+            "BTCUSDT",
+            "ETHUSDT",
+            "LTCUSDT",
+            "XRPUSDT"});
             this.comboBoxChoiseCurrency.Location = new System.Drawing.Point(47, 16);
             this.comboBoxChoiseCurrency.Name = "comboBoxChoiseCurrency";
             this.comboBoxChoiseCurrency.Size = new System.Drawing.Size(158, 26);
@@ -78,6 +79,7 @@ namespace DecideDesktop
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
+            this.panel1.Controls.Add(this.labelUserBalance);
             this.panel1.Controls.Add(this.labelAddCurrency);
             this.panel1.Controls.Add(this.comboBoxChoiseCurrency);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -97,26 +99,16 @@ namespace DecideDesktop
             this.panelTemp.Size = new System.Drawing.Size(712, 33);
             this.panelTemp.TabIndex = 4;
             // 
-            // panelFill
+            // label3
             // 
-            this.panelFill.AutoScroll = true;
-            this.panelFill.Controls.Add(this.labelWalletHavent);
-            this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFill.Location = new System.Drawing.Point(0, 86);
-            this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(712, 328);
-            this.panelFill.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(26, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Валюта";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(224, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 26);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Количество";
             // 
             // label2
             // 
@@ -129,16 +121,26 @@ namespace DecideDesktop
             this.label2.TabIndex = 1;
             this.label2.Text = "Процент";
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(224, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 26);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Количество";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(26, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Валюта";
+            // 
+            // panelFill
+            // 
+            this.panelFill.AutoScroll = true;
+            this.panelFill.Controls.Add(this.labelWalletHavent);
+            this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFill.Location = new System.Drawing.Point(0, 86);
+            this.panelFill.Name = "panelFill";
+            this.panelFill.Size = new System.Drawing.Size(712, 328);
+            this.panelFill.TabIndex = 5;
             // 
             // labelWalletHavent
             // 
@@ -150,6 +152,17 @@ namespace DecideDesktop
             this.labelWalletHavent.Size = new System.Drawing.Size(192, 21);
             this.labelWalletHavent.TabIndex = 0;
             this.labelWalletHavent.Text = "У вас еще нет кошельков";
+            // 
+            // labelUserBalance
+            // 
+            this.labelUserBalance.AutoSize = true;
+            this.labelUserBalance.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUserBalance.ForeColor = System.Drawing.Color.White;
+            this.labelUserBalance.Location = new System.Drawing.Point(529, 16);
+            this.labelUserBalance.Name = "labelUserBalance";
+            this.labelUserBalance.Size = new System.Drawing.Size(88, 26);
+            this.labelUserBalance.TabIndex = 3;
+            this.labelUserBalance.Text = "Баланс:";
             // 
             // FormProfile
             // 
@@ -165,6 +178,7 @@ namespace DecideDesktop
             this.Name = "FormProfile";
             this.ShowInTaskbar = false;
             this.Text = "FormProfile";
+            this.Load += new System.EventHandler(this.FormProfile_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelTemp.ResumeLayout(false);
@@ -186,5 +200,6 @@ namespace DecideDesktop
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelWalletHavent;
+        public System.Windows.Forms.Label labelUserBalance;
     }
 }
