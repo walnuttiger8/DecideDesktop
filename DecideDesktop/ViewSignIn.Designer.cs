@@ -76,13 +76,13 @@ namespace DecideDesktop
             this.textBoxSignInProfile.Size = new System.Drawing.Size(297, 21);
             this.textBoxSignInProfile.TabIndex = 5;
             this.textBoxSignInProfile.TabStop = false;
-            this.textBoxSignInProfile.Text = "Никнейм";
+            this.textBoxSignInProfile.Text = "Почта";
             this.textBoxSignInProfile.Click += new System.EventHandler(this.textBoxSignInProfile_Click);
             // 
             // picProfSignIn
             // 
             this.picProfSignIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.picProfSignIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picProfSignIn.BackgroundImage")));
+            this.picProfSignIn.BackgroundImage = global::DecideDesktop.Properties.Resources.icon_email_white;
             this.picProfSignIn.Cursor = System.Windows.Forms.Cursors.Default;
             this.picProfSignIn.InitialImage = null;
             this.picProfSignIn.Location = new System.Drawing.Point(18, 183);

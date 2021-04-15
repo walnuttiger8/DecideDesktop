@@ -83,7 +83,7 @@ namespace DecideDesktop
             this.textBoxProfileSignUp.Size = new System.Drawing.Size(297, 21);
             this.textBoxProfileSignUp.TabIndex = 2;
             this.textBoxProfileSignUp.TabStop = false;
-            this.textBoxProfileSignUp.Text = "Никнейм";
+            this.textBoxProfileSignUp.Text = "Имя";
             this.textBoxProfileSignUp.Click += new System.EventHandler(this.textBox1_Click);
             // 
             // panelProfile
@@ -101,7 +101,7 @@ namespace DecideDesktop
             this.textBoxPasswordSignUp.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPasswordSignUp.ForeColor = System.Drawing.Color.White;
             this.textBoxPasswordSignUp.HideSelection = false;
-            this.textBoxPasswordSignUp.Location = new System.Drawing.Point(43, 203);
+            this.textBoxPasswordSignUp.Location = new System.Drawing.Point(43, 251);
             this.textBoxPasswordSignUp.Multiline = true;
             this.textBoxPasswordSignUp.Name = "textBoxPasswordSignUp";
             this.textBoxPasswordSignUp.Size = new System.Drawing.Size(297, 21);
@@ -113,7 +113,7 @@ namespace DecideDesktop
             // panelPassword
             // 
             this.panelPassword.BackColor = System.Drawing.Color.White;
-            this.panelPassword.Location = new System.Drawing.Point(15, 230);
+            this.panelPassword.Location = new System.Drawing.Point(15, 278);
             this.panelPassword.Name = "panelPassword";
             this.panelPassword.Size = new System.Drawing.Size(325, 1);
             this.panelPassword.TabIndex = 3;
@@ -125,7 +125,7 @@ namespace DecideDesktop
             this.textBoxEmailSignUp.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxEmailSignUp.ForeColor = System.Drawing.Color.White;
             this.textBoxEmailSignUp.HideSelection = false;
-            this.textBoxEmailSignUp.Location = new System.Drawing.Point(43, 259);
+            this.textBoxEmailSignUp.Location = new System.Drawing.Point(43, 200);
             this.textBoxEmailSignUp.Multiline = true;
             this.textBoxEmailSignUp.Name = "textBoxEmailSignUp";
             this.textBoxEmailSignUp.Size = new System.Drawing.Size(297, 21);
@@ -137,7 +137,7 @@ namespace DecideDesktop
             // panelEmail
             // 
             this.panelEmail.BackColor = System.Drawing.Color.White;
-            this.panelEmail.Location = new System.Drawing.Point(15, 286);
+            this.panelEmail.Location = new System.Drawing.Point(15, 227);
             this.panelEmail.Name = "panelEmail";
             this.panelEmail.Size = new System.Drawing.Size(325, 1);
             this.panelEmail.TabIndex = 3;
@@ -220,7 +220,7 @@ namespace DecideDesktop
             this.picEmailSignUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picEmailSignUp.BackgroundImage")));
             this.picEmailSignUp.Cursor = System.Windows.Forms.Cursors.Default;
             this.picEmailSignUp.InitialImage = null;
-            this.picEmailSignUp.Location = new System.Drawing.Point(15, 259);
+            this.picEmailSignUp.Location = new System.Drawing.Point(15, 200);
             this.picEmailSignUp.Name = "picEmailSignUp";
             this.picEmailSignUp.Size = new System.Drawing.Size(21, 21);
             this.picEmailSignUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -233,7 +233,7 @@ namespace DecideDesktop
             this.picPassSignUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picPassSignUp.BackgroundImage")));
             this.picPassSignUp.Cursor = System.Windows.Forms.Cursors.Default;
             this.picPassSignUp.InitialImage = null;
-            this.picPassSignUp.Location = new System.Drawing.Point(15, 203);
+            this.picPassSignUp.Location = new System.Drawing.Point(15, 251);
             this.picPassSignUp.Name = "picPassSignUp";
             this.picPassSignUp.Size = new System.Drawing.Size(22, 20);
             this.picPassSignUp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

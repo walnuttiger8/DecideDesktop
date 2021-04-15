@@ -33,10 +33,10 @@ namespace DecideDesktop
             this.labelAddCurrency = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelTemp = new System.Windows.Forms.Panel();
-            this.panelFill = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelFill = new System.Windows.Forms.Panel();
             this.labelWalletHavent = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelTemp.SuspendLayout();
@@ -97,26 +97,16 @@ namespace DecideDesktop
             this.panelTemp.Size = new System.Drawing.Size(712, 33);
             this.panelTemp.TabIndex = 4;
             // 
-            // panelFill
+            // label3
             // 
-            this.panelFill.AutoScroll = true;
-            this.panelFill.Controls.Add(this.labelWalletHavent);
-            this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFill.Location = new System.Drawing.Point(0, 86);
-            this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(712, 328);
-            this.panelFill.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(26, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Валюта";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(224, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 26);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Количество";
             // 
             // label2
             // 
@@ -129,16 +119,26 @@ namespace DecideDesktop
             this.label2.TabIndex = 1;
             this.label2.Text = "Процент";
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(224, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 26);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Количество";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(26, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Валюта";
+            // 
+            // panelFill
+            // 
+            this.panelFill.AutoScroll = true;
+            this.panelFill.Controls.Add(this.labelWalletHavent);
+            this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFill.Location = new System.Drawing.Point(0, 86);
+            this.panelFill.Name = "panelFill";
+            this.panelFill.Size = new System.Drawing.Size(712, 328);
+            this.panelFill.TabIndex = 5;
             // 
             // labelWalletHavent
             // 
