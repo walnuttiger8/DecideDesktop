@@ -175,6 +175,15 @@ namespace DecideDesktop
 
                 }
             }
+            else
+            {
+                textBoxEmailSignUp.ForeColor = Color.Red;
+                textBoxPasswordSignUp.ForeColor = Color.Red;
+                textBoxProfileSignUp.ForeColor = Color.Red;
+                panelEmail.BackColor = Color.Red;
+                panelPassword.BackColor = Color.Red;
+                panelProfile.BackColor = Color.Red;
+            }
         }
         private bool isMousePress = false;
         private Point _clickPoint;

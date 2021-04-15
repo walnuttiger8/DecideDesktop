@@ -66,7 +66,7 @@ namespace DecideDesktop
         {
             textBoxSignInProfile.Clear();
 
-            picProfSignIn.BackgroundImage = Properties.Resources.profile_yellow;
+            picProfSignIn.BackgroundImage = Properties.Resources.email_yellow;
             panelProfileSignIn.BackColor = Color.FromArgb(215, 179, 6);
             textBoxSignInProfile.ForeColor = Color.FromArgb(215, 179, 6);
 
@@ -84,7 +84,7 @@ namespace DecideDesktop
             panelPasswordSignIn.BackColor = Color.FromArgb(215, 179, 6);
             textBoxSignInPassword.ForeColor = Color.FromArgb(215, 179, 6);
 
-            picProfSignIn.BackgroundImage = Properties.Resources.profile_whitesmall;
+            picProfSignIn.BackgroundImage = Properties.Resources.icon_email_white;
             panelProfileSignIn.BackColor = Color.White;
             textBoxSignInProfile.ForeColor = Color.White;
 
@@ -135,14 +135,21 @@ namespace DecideDesktop
 
         private void buttonSignInSignIn_Click(object sender, EventArgs e)
         {
-            if(Classes.FieldsCheck.UserNameCheck(textBoxSignInProfile.Text) &&
+            if(Classes.FieldsCheck.EMailCheck(textBoxSignInProfile.Text) &&
                 Classes.FieldsCheck.PasswordCheck(textBoxSignInPassword.Text))
             {
                 Dictionary<string, object> SignInValues = new Dictionary<string, object>();
-                SignInValues.Add("username", textBoxSignInProfile.Text);
+                SignInValues.Add("email", textBoxSignInProfile.Text);
                 SignInValues.Add("password", textBoxSignInPassword.Text);
 
                 int userId = UserController.LogIn(HTTPClient.Address, SignInValues);
+            }
+            else
+            {
+                textBoxSignInPassword.ForeColor = Color.Red;
+                textBoxSignInProfile.ForeColor = Color.Red;
+                panelPasswordSignIn.BackColor = Color.Red;
+                panelProfileSignIn.BackColor = Color.Red;
             }
    
         }
