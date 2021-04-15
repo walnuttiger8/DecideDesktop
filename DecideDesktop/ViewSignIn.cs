@@ -152,6 +152,7 @@ namespace DecideDesktop
             ViewMain m = new ViewMain();
             m.Show();
             this.Visible = false;
+            SignUp.Visible = false;
         }
 
         private void panelLocation_Paint(object sender, PaintEventArgs e)

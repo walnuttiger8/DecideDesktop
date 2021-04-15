@@ -32,6 +32,7 @@ namespace DecideDesktop
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewMain));
             this.panelSidePart = new System.Windows.Forms.Panel();
             this.panelCurrencySubmenu = new System.Windows.Forms.Panel();
+            this.btnXRP = new System.Windows.Forms.Button();
             this.btnLTCcurrency = new System.Windows.Forms.Button();
             this.btnETHcurrency = new System.Windows.Forms.Button();
             this.btnBTCcurrency = new System.Windows.Forms.Button();
@@ -58,8 +59,6 @@ namespace DecideDesktop
             // 
             // panelSidePart
             // 
-            this.panelSidePart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelSidePart.AutoScroll = true;
             this.panelSidePart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(34)))));
             this.panelSidePart.Controls.Add(this.panelCurrencySubmenu);
@@ -75,14 +74,35 @@ namespace DecideDesktop
             // panelCurrencySubmenu
             // 
             this.panelCurrencySubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(64)))));
+            this.panelCurrencySubmenu.Controls.Add(this.btnXRP);
             this.panelCurrencySubmenu.Controls.Add(this.btnLTCcurrency);
             this.panelCurrencySubmenu.Controls.Add(this.btnETHcurrency);
             this.panelCurrencySubmenu.Controls.Add(this.btnBTCcurrency);
             this.panelCurrencySubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCurrencySubmenu.Location = new System.Drawing.Point(0, 390);
             this.panelCurrencySubmenu.Name = "panelCurrencySubmenu";
-            this.panelCurrencySubmenu.Size = new System.Drawing.Size(222, 143);
+            this.panelCurrencySubmenu.Size = new System.Drawing.Size(222, 194);
             this.panelCurrencySubmenu.TabIndex = 3;
+            // 
+            // btnXRP
+            // 
+            this.btnXRP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(57)))));
+            this.btnXRP.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnXRP.FlatAppearance.BorderSize = 0;
+            this.btnXRP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXRP.Font = new System.Drawing.Font("Montserrat Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnXRP.ForeColor = System.Drawing.Color.White;
+            this.btnXRP.Location = new System.Drawing.Point(0, 143);
+            this.btnXRP.Name = "btnXRP";
+            this.btnXRP.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnXRP.Size = new System.Drawing.Size(222, 53);
+            this.btnXRP.TabIndex = 6;
+            this.btnXRP.Text = "XRP";
+            this.btnXRP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXRP.UseVisualStyleBackColor = false;
+            this.btnXRP.Click += new System.EventHandler(this.btnXRP_Click);
+            this.btnXRP.MouseLeave += new System.EventHandler(this.btnXRP_MouseLeave);
+            this.btnXRP.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnXRP_MouseMove);
             // 
             // btnLTCcurrency
             // 
@@ -327,33 +347,38 @@ namespace DecideDesktop
             // 
             this.panelBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 410);
+            this.panelBottom.Location = new System.Drawing.Point(0, 422);
             this.panelBottom.Name = "panelBottom";
             this.panelBottom.Size = new System.Drawing.Size(934, 164);
             this.panelBottom.TabIndex = 5;
             // 
             // panelFill
             // 
+            this.panelFill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(64)))));
-            this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFill.Location = new System.Drawing.Point(0, 0);
+            this.panelFill.Location = new System.Drawing.Point(222, 0);
             this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(934, 574);
+            this.panelFill.Size = new System.Drawing.Size(712, 426);
             this.panelFill.TabIndex = 6;
             // 
             // ViewMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 574);
+            this.ClientSize = new System.Drawing.Size(934, 586);
             this.Controls.Add(this.panelSidePart);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelFill);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "ViewMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "D.Bosh";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewMain_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewMain_FormClosed);
             this.Load += new System.EventHandler(this.ViewMain_Load);
             this.panelSidePart.ResumeLayout(false);
             this.panelCurrencySubmenu.ResumeLayout(false);
@@ -386,5 +411,6 @@ namespace DecideDesktop
         private System.Windows.Forms.PictureBox picExit;
         private System.Windows.Forms.Panel panelBottom;
         private System.Windows.Forms.Panel panelFill;
+        private System.Windows.Forms.Button btnXRP;
     }
 }

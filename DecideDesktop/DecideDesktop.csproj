@@ -51,8 +51,33 @@
   <ItemGroup>
     <Compile Include="Classes\Coin.cs" />
     <Compile Include="Classes\FieldsCheck.cs" />
+    <Compile Include="Classes\Trade.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserController.cs" />
+    <Compile Include="FormHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistory.Designer.cs">
+      <DependentUpon>FormHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProfile.Designer.cs">
+      <DependentUpon>FormProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,7 +85,6 @@
       <DependentUpon>ViewMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Wallet.cs" />
-
     <Compile Include="ViewSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +100,18 @@
     <Compile Include="Classes\HTTPClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormHistory.resx">
+      <DependentUpon>FormHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProfile.resx">
+      <DependentUpon>FormProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewMain.resx">
       <DependentUpon>ViewMain.cs</DependentUpon>
     </EmbeddedResource>
