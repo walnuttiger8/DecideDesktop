@@ -223,6 +223,8 @@ namespace DecideDesktop
 
         private void ViewMain_Load(object sender, EventArgs e)
         {
+            showSubMenu(panelMenuSubmenu);
+            showSubMenu(panelCurrencySubmenu);
             FormProfile.ViewMain = this;
 
             openChildForm(new FormMain());
@@ -231,6 +233,15 @@ namespace DecideDesktop
 
             Coin XRP = new Coin("XRPUSDT", 1.70F);
             Wallet XRPWallet = new Wallet(XRP, 500, 50);
+
+            Trade BTC_buy = new Trade(BTCWallet, BTCWallet.Coin.Price, 0.001F, DateTime.UtcNow.ToString(), "buy");
+            Trade XRP_sell = new Trade(XRPWallet, XRPWallet.Coin.Price, 400, DateTime.UtcNow.ToString(), "sell");
+
+            List<Trade> Trades = new List<Trade>()
+            {
+                BTC_buy,
+                XRP_sell
+            };
         }
         private Form activeForm = null;
         private void openChildForm(Form childForm)

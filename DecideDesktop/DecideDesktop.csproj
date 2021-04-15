@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Classes\Coin.cs" />
     <Compile Include="Classes\FieldsCheck.cs" />
+    <Compile Include="Classes\Trade.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\UserController.cs" />
     <Compile Include="FormHistory.cs">

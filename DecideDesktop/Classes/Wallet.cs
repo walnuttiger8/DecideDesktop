@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DecideDesktop.Classes
 {
@@ -17,6 +18,10 @@ namespace DecideDesktop.Classes
             this.Coin = Coin;
             this.Amount = Amount;
             this.Percent = Percent;
+        }
+        internal void Sell(object sender, EventArgs e)
+        {
+            MessageBox.Show("Продано");
         }
     }
 }
