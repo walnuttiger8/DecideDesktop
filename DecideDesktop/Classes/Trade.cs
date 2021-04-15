@@ -22,5 +22,12 @@ namespace DecideDesktop.Classes
             this.Time = time;
             this.Transaction = type;
         }
+
+        internal static Trade FromJson(Dictionary<string, object> JsonResult)
+        {
+            Wallet wallet = Wallet.FromJson((Dictionary<string, object>)JsonResult["wallet"]);
+
+            return new Trade(wallet, float.Parse(JsonResult["price"].ToString()), float.Parse(JsonResult["amount"].ToString()), JsonResult["time"].ToString(), JsonResult["transaction"].ToString());
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace DecideDesktop
     {
         public static ViewSignIn SignIn = new ViewSignIn();
         public static ViewSignUp SignUp = new ViewSignUp();
+        internal static int userId = 0;
+        internal static User thisUser = null;
         public ViewMain()
         {
             InitializeComponent();
@@ -228,20 +230,19 @@ namespace DecideDesktop
             FormProfile.ViewMain = this;
 
             openChildForm(new FormMain());
-            Coin BTC = new Coin("BTCUSDT", 64000);
-            Wallet BTCWallet = new Wallet(BTC, 0.015F, 25);
-
-            Coin XRP = new Coin("XRPUSDT", 1.70F);
-            Wallet XRPWallet = new Wallet(XRP, 500, 50);
-
-            Trade BTC_buy = new Trade(BTCWallet, BTCWallet.Coin.Price, 0.001F, DateTime.UtcNow.ToString(), "buy");
-            Trade XRP_sell = new Trade(XRPWallet, XRPWallet.Coin.Price, 400, DateTime.UtcNow.ToString(), "sell");
-
-            List<Trade> Trades = new List<Trade>()
+            
+            if (userId != 0)
             {
-                BTC_buy,
-                XRP_sell
-            };
+                thisUser = UserController.GetUser(HTTPClient.Address, userId);
+                labelUsername.Text = thisUser.Name;
+                List<Trade> userTrades = UserController.GetTrades(HTTPClient.Address, userId);
+
+                foreach (Trade trade in userTrades)
+                {
+                    richTextBox1.Text += $"Кэш от транзакции: {trade.Price}$, количество монет: {trade.Amount}, кошелек {trade.Wallet.Coin.Symbol}, время транзакции: {trade.Time}, тип: {trade.Transaction}"
+                        + System.Environment.NewLine;
+                }
+            }
         }
         private Form activeForm = null;
         private void openChildForm(Form childForm)

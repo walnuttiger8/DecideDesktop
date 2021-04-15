@@ -135,16 +135,25 @@ namespace DecideDesktop
 
         private void buttonSignInSignIn_Click(object sender, EventArgs e)
         {
-            if(Classes.FieldsCheck.UserNameCheck(textBoxSignInProfile.Text) &&
+            if (Classes.FieldsCheck.UserNameCheck(textBoxSignInProfile.Text) &&
                 Classes.FieldsCheck.PasswordCheck(textBoxSignInPassword.Text))
             {
-                Dictionary<string, object> SignInValues = new Dictionary<string, object>();
-                SignInValues.Add("username", textBoxSignInProfile.Text);
-                SignInValues.Add("password", textBoxSignInPassword.Text);
+                Dictionary<string, object> SignInValues = new Dictionary<string, object>()
+                {
+                    { "email", textBoxSignInProfile.Text },
+                    { "password", textBoxSignInPassword.Text}
+                };
 
                 int userId = UserController.LogIn(HTTPClient.Address, SignInValues);
+                if (userId.Equals(1))
+                {
+                    ViewMain viewMain = new ViewMain();
+                    viewMain.Show();
+                    ViewMain.userId = userId;
+                    this.Visible = false;
+                    SignUp.Visible = false;
+                }
             }
-   
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -24,31 +24,31 @@ namespace DecideDesktop
         {
             if (comboBoxChoiseCurrency.SelectedItem.Equals("BTC"))
             {
-                var BTCPanel = createWallet(new Wallet(new Coin("BTC",64000),0.0150f,25));
+                var BTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "BTCUSDT", ViewMain.userId));
                 BTCPanel.Name = "BTCPanel";
                 WalletsPanel.Add(BTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("BTC");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETH"))
             {
-                var ETHPanel = createWallet(new Wallet(new Coin("ETH", 64000), 0.0150f, 25));
+                var ETHPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "ETHUSDT", ViewMain.userId));
                 ETHPanel.Name = "ETHPanel";
                 WalletsPanel.Add(ETHPanel);
                 comboBoxChoiseCurrency.Items.Remove("ETH");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTC"))
             {
-                var LTCPanel = createWallet(new Wallet(new Coin("LTC", 64000), 0.0150f, 25));
+                var LTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "LTCUSDT", ViewMain.userId));
                 LTCPanel.Name = "LTCPanel";
                 WalletsPanel.Add(LTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("LTC");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRP"))
             {
-                var XRPPanel = createWallet(new Wallet(new Coin("XRP", 64000), 0.0150f, 25));
-                XRPPanel.Name = "XRPPanel";
+                var XRPPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "XRPUSDT", ViewMain.userId));
+                XRPPanel.Name = "LTCPanel";
                 WalletsPanel.Add(XRPPanel);
-                comboBoxChoiseCurrency.Items.Remove("XRP");
+                comboBoxChoiseCurrency.Items.Remove("LTC");
             }            
         }
 
@@ -85,7 +85,6 @@ namespace DecideDesktop
                 Location = new System.Drawing.Point(60, 10),
                 Text =wallet.Amount.ToString(),
                 Font = new System.Drawing.Font("Monsterrat", 14.0f),
-
             };
             BTCamount.Left = 230;
             BTCamount.Top = 10;
@@ -100,8 +99,6 @@ namespace DecideDesktop
                 Left = 430,
                 Top = 10,
                 ForeColor = Color.White,
-                
-
             };
             BTCpanel.Controls.Add(BTCpercent);
 
@@ -113,13 +110,10 @@ namespace DecideDesktop
                 Top = 10,
                 Left = 550,
                 ForeColor = Color.Red,
-                FlatStyle = FlatStyle.Flat
-                
-                
+                FlatStyle = FlatStyle.Flat       
             };
             labelSell.Click+= new EventHandler(wallet.Sell);
             BTCpanel.Controls.Add(labelSell);
-
 
             Panel panelLine = new Panel()
             {
@@ -131,6 +125,5 @@ namespace DecideDesktop
             BTCpanel.Controls.Add(panelLine);
             return BTCpanel;
         }
-
     }
 }

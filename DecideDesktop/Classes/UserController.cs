@@ -54,15 +54,11 @@ namespace DecideDesktop.Classes
 
             var JsonResult = HTTPClient.SendRequest(Address + "/get_user", userIdData);
 
-            var UserData = JsonConvert.DeserializeObject<IDictionary<string, object>>(JsonResult["result"].ToString());
+            var UserData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["result"].ToString());
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                var thisUserUsername = UserData["Name"].ToString();
-                var thisUserEmail = UserData["Email"].ToString();
-                float thisUserBalance = float.Parse(UserData["Balance"].ToString());
-
-                return new User(thisUserUsername, thisUserEmail, thisUserBalance);
+                return User.FromJson(UserData);
             }
             else
             {
@@ -87,20 +83,37 @@ namespace DecideDesktop.Classes
             {
                 foreach (Dictionary<string, object> Dictionary in WalletsList)
                 {
-                    var CoinParams = JsonConvert.DeserializeObject<Dictionary<string, object>>(Dictionary["Coin"].ToString());
+                    Wallet wallet = Wallet.FromJson(Dictionary);
 
-                    Coin WalletCoin = new Coin(CoinParams["Symbol"].ToString(), float.Parse(CoinParams["Price"].ToString()));
-
-                    var WalletAmount = float.Parse(Dictionary["Amount"].ToString());
-                    var WalletPercent = float.Parse(Dictionary["Percent"].ToString());
-
-                    UserWallets.Add(new Wallet(WalletCoin, WalletAmount, WalletPercent));
+                    UserWallets.Add(wallet);
                 }
                 return UserWallets;
             }
             else
             {
                 PrintError(JsonResult["message"].ToString());
+                return null;
+            }
+        }
+
+        internal static Wallet GetWallet(string Address, string Symbol, int userId)
+        {
+            Dictionary<string, object> UserDict = new Dictionary<string, object>()
+            {
+                {"symbol", Symbol },
+                {"user_id", userId}
+            };
+
+            var JsonResult = HTTPClient.SendRequest(Address + "/get_wallet", UserDict);
+
+            var wallet = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                return Wallet.FromJson(wallet);
+            }
+            else
+            {
                 return null;
             }
         }
@@ -114,24 +127,110 @@ namespace DecideDesktop.Classes
 
             var JsonResult = HTTPClient.SendRequest(Address + "/get_wallet", symbolData);
 
-            var Wallet = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+            var WalletDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                var CoinParams = JsonConvert.DeserializeObject<Dictionary<string, object>>(Wallet["Coin"].ToString());
-
-                Coin WalletCoin = new Coin(CoinParams["Symbol"].ToString(), float.Parse(CoinParams["Price"].ToString()));
-
-                var WalletAmount = float.Parse(Wallet["Amount"].ToString());
-                var WalletPercent = float.Parse(Wallet["Percent"].ToString());
-
-                return new Wallet(WalletCoin, WalletAmount, WalletPercent);
+                Wallet wallet = Wallet.FromJson(WalletDict);
+                return wallet;
             }
             else
             {
                 PrintError(JsonResult["message"].ToString());
                 return null;
             }
+        }
+
+        internal static Wallet AddCoin(string Address, string Symbol, int userId)
+        {
+            Dictionary<string, object> UserCoin = new Dictionary<string, object>()
+            {
+                {"symbol", Symbol },
+                {"user_id", userId }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(Address + "/add_coin", UserCoin);
+
+            var WalletDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                Wallet wallet = Wallet.FromJson(WalletDict);
+                return wallet;
+            }
+            else
+            {
+                PrintError(JsonResult["message"].ToString());
+                return null;
+            }
+        }
+
+        internal static List<Trade> GetTrades(string Address, int userId)
+        {
+            List<Trade> TradesList = null;
+            Dictionary<string, object> userIdDict = new Dictionary<string, object>()
+            {
+                {"user_id" , userId }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_trades", userIdDict);
+
+            var Trades = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(JsonResult["results"].ToString());
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                foreach (Dictionary<string, object> Dictionary in Trades)
+                {
+                    Trade trade = Trade.FromJson(Dictionary);
+                    TradesList.Add(trade);
+                }
+                return TradesList;
+            }
+            else
+            {
+                PrintError(JsonResult["success"].ToString());
+                return null;
+            }
+        }
+
+        internal static string IncreaseBalance(string Address, int userId)
+        {
+            Dictionary<string, object> userIdDict = new Dictionary<string, object>()
+            {
+                {"user_id", userId }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/top_up", userIdDict);
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                return "Баланс пополнен успешно";
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        internal static List<float> GetChartData(string Address, string Symbol)
+        {
+            List<float> ChartData = null;
+            Dictionary<string, object> CoinDict = new Dictionary<string, object>()
+            {
+                {"symbol", Symbol }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_chart_data", CoinDict);
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {            
+                return ChartData = JsonConvert.DeserializeObject<List<float>>(JsonResult["results"].ToString());
+            }
+            else
+            {
+                PrintError(JsonResult["message"].ToString());
+                return null;
+            }         
         }
 
         internal static void PrintError(string ErrorMessage)
