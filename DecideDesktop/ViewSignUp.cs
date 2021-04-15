@@ -23,7 +23,7 @@ namespace DecideDesktop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            ViewMain.SignUp = this;
         }
         public static ViewSignIn SignIn = new ViewSignIn();
 

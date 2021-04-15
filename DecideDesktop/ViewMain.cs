@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DecideDesktop.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace DecideDesktop
     public partial class ViewMain : Form
     {
         public static ViewSignIn SignIn = new ViewSignIn();
+        public static ViewSignUp SignUp = new ViewSignUp();
         public ViewMain()
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace DecideDesktop
 
         private void button2_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormMain());
             //
             //
             hideSubMenu();
@@ -58,7 +61,7 @@ namespace DecideDesktop
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FormProfile());
             //
             //
             hideSubMenu();
@@ -66,7 +69,7 @@ namespace DecideDesktop
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FormHistory());
             //
             //
             hideSubMenu();
@@ -74,7 +77,7 @@ namespace DecideDesktop
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FormSettings());
             //
             //
             hideSubMenu();
@@ -87,7 +90,7 @@ namespace DecideDesktop
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FormMain());
             //
             //
             hideSubMenu();
@@ -95,7 +98,7 @@ namespace DecideDesktop
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FormMain());
             //
             //
             hideSubMenu();
@@ -103,7 +106,7 @@ namespace DecideDesktop
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new FormMain());
             //
             //
             hideSubMenu();
@@ -111,8 +114,9 @@ namespace DecideDesktop
 
         private void picExit_Click(object sender, EventArgs e)
         {
+            SignUp.Visible = true;
             SignIn.Visible = true;
-            this.Close();
+            this.Dispose();
             
         }
 
@@ -219,7 +223,63 @@ namespace DecideDesktop
 
         private void ViewMain_Load(object sender, EventArgs e)
         {
+            FormProfile.ViewMain = this;
+
+            openChildForm(new FormMain());
+            Coin BTC = new Coin("BTCUSDT", 64000);
+            Wallet BTCWallet = new Wallet(BTC, 0.015F, 25);
+
+            Coin XRP = new Coin("XRPUSDT", 1.70F);
+            Wallet XRPWallet = new Wallet(XRP, 500, 50);
+        }
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelFill.Controls.Add(childForm);
+            panelFill.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
             
+
+        }
+
+        private void ViewMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Вы действительно хотите покинуть приложение?", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
+                e.Cancel = false;
+            else
+                e.Cancel = true;
+            
+        }
+
+        private void ViewMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnXRP_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FormMain());
+            //
+            //
+            hideSubMenu();
+        }
+
+        private void btnXRP_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnXRP.ForeColor = Color.FromArgb(215, 179, 6);
+        }
+
+        private void btnXRP_MouseLeave(object sender, EventArgs e)
+        {
+            btnXRP.ForeColor = Color.White;
         }
     }
 }

@@ -11,18 +11,15 @@ namespace DecideDesktop
     internal class User
     {
         internal string Name { get; set; }
-        internal string Password { get; set; }
         internal string Email { get; set; }
         internal float Balance { get; set; }
         internal List<Wallet> Wallets { get; set; }
 
-        public User(string Name, string Password, string Email, float Balance, List<Wallet> wallets)
+        public User(string Name, string Email, float Balance)
         {
             this.Name = Name;
-            this.Password = Password;
             this.Email = Email;
             this.Balance = Balance;
-            this.Wallets = wallets;
         }
 
         public User() { } 
