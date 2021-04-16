@@ -138,6 +138,7 @@ namespace DecideDesktop.Classes
                 PrintError(JsonResult["message"].ToString());
                 return null;
             }
+
         }
 
         internal static Wallet AddCoin(string Symbol, int userId, float percent = 100)
