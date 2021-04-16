@@ -60,5 +60,25 @@ namespace DecideDesktop
 
 
         }
+
+        private void btnlive_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn15min_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn1hour_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn1day_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

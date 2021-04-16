@@ -120,27 +120,14 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static Wallet GetCoin(string Symbol)
+        internal static Coin GetCoin(string Symbol)
         {
             Dictionary<string, object> symbolData = new Dictionary<string, object>
             {
                 {"symbol", Symbol}
             };
-
-            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_wallet", symbolData);
-
-            var WalletDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
-
-            if (Convert.ToInt32(JsonResult["success"]) == 1)
-            {
-                Wallet wallet = Wallet.FromJson(WalletDict);
-                return wallet;
-            }
-            else
-            {
-                PrintError(JsonResult["message"].ToString());
-                return null;
-            }
+            return new Coin("BTCUSDT", 64000f);
+            
         }
 
         internal static Wallet AddCoin(string Symbol, int userId, float percent = 100)
