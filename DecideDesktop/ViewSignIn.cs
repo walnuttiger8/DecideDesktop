@@ -145,15 +145,21 @@ namespace DecideDesktop
                 };
 
 
-                int userId = UserController.LogIn(HTTPClient.Address, SignInValues);
-                ViewMain.userId = userId;
-                ViewMain.thisUser = UserController.GetUser(HTTPClient.Address, userId);
+                int userId = UserController.LogIn(SignInValues);
+                if (userId != 0)
+                {
+                    ViewMain.userId = userId;
+                    ViewMain.thisUser = UserController.GetUser(userId);
+                    ViewMain.ETHGraphic = UserController.GetChartData("ETHUSDT", "1h", 100);
+                    ViewMain.BTCGraphic = UserController.GetChartData("BTCUSDT", "1h", 100);
+                    ViewMain.XRPGraphic = UserController.GetChartData("XRPUSDT", "1h", 100);
+                    ViewMain.LTCGraphic = UserController.GetChartData("LTCUSDT", "1h", 100);
+                    ViewMain viewMain = new ViewMain();
 
-                ViewMain viewMain = new ViewMain();
-
-                viewMain.Show();
-                this.Visible = false;
-                SignUp.Visible = false;           
+                    viewMain.Show();
+                    this.Visible = false;
+                    SignUp.Visible = false;
+                }
             }
 
             else

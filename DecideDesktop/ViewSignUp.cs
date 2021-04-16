@@ -166,7 +166,7 @@ namespace DecideDesktop
                     { "email", textBoxEmailSignUp.Text }
                 };
 
-                thisUserId = UserController.SignUp(HTTPClient.Address, SignUpValues);
+                thisUserId = UserController.SignUp(SignUpValues);
                 if (thisUserId != 0)
                 {
                     MessageBox.Show("Пользователь успешно зарегистрирован", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

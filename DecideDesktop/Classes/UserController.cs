@@ -10,9 +10,9 @@ namespace DecideDesktop.Classes
 {
     internal static class UserController
     {
-        internal static int SignUp(string Address, Dictionary<string, object> UserValues)
+        internal static int SignUp(Dictionary<string, object> UserValues)
         {
-            var JsonResult = HTTPClient.SendRequest(Address + "/register", UserValues);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/register", UserValues);
 
             var userData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
@@ -27,9 +27,9 @@ namespace DecideDesktop.Classes
                 return 0;
             }
         }
-        internal static int LogIn(string Address, Dictionary<string, object> UserValues)
+        internal static int LogIn(Dictionary<string, object> UserValues)
         {
-            var JsonResult = HTTPClient.SendRequest(Address + "/login", UserValues);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/login", UserValues);
 
             var userData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
@@ -45,14 +45,14 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static User GetUser(string Address, int userId)
+        internal static User GetUser(int userId)
         {
             Dictionary<string, object> userIdData = new Dictionary<string, object>
             {
                 {"user_id", userId }
             };
 
-            var JsonResult = HTTPClient.SendRequest(Address + "/get_user", userIdData);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_user", userIdData);
 
             var UserData = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
@@ -68,7 +68,7 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static List<Wallet> GetWallets(string Address, int userId)
+        internal static List<Wallet> GetWallets(int userId)
         {
             List<Wallet> UserWallets = new List<Wallet>();
             Dictionary<string, object> userIdData = new Dictionary<string, object>
@@ -76,7 +76,7 @@ namespace DecideDesktop.Classes
                 {"user_id", userId }
             };
 
-            var JsonResult = HTTPClient.SendRequest(Address + "/get_wallets", userIdData);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_wallets", userIdData);
 
             var WalletsList = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(JsonResult["results"].ToString());
 
@@ -97,7 +97,7 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static Wallet GetWallet(string Address, string Symbol, int userId)
+        internal static Wallet GetWallet(string Symbol, int userId)
         {
             Dictionary<string, object> UserDict = new Dictionary<string, object>()
             {
@@ -105,7 +105,7 @@ namespace DecideDesktop.Classes
                 {"user_id", userId}
             };
 
-            var JsonResult = HTTPClient.SendRequest(Address + "/get_wallet", UserDict);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_wallet", UserDict);
 
             var WalletDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
@@ -120,14 +120,14 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static Wallet GetCoin(string Address, string Symbol)
+        internal static Wallet GetCoin(string Symbol)
         {
             Dictionary<string, object> symbolData = new Dictionary<string, object>
             {
                 {"symbol", Symbol}
             };
 
-            var JsonResult = HTTPClient.SendRequest(Address + "/get_wallet", symbolData);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_wallet", symbolData);
 
             var WalletDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
@@ -143,15 +143,16 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static Wallet AddCoin(string Address, string Symbol, int userId)
+        internal static Wallet AddCoin(string Symbol, int userId, float percent = 100)
         {
             Dictionary<string, object> UserCoin = new Dictionary<string, object>()
             {
                 {"symbol", Symbol },
-                {"user_id", userId }
+                {"user_id", userId },
+                {"percent", percent }
             };
 
-            var JsonResult = HTTPClient.SendRequest(Address + "/add_coin", UserCoin);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/add_coin", UserCoin);
 
             var WalletDict = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
 
@@ -167,7 +168,7 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static List<Trade> GetTrades(string Address, int userId)
+        internal static List<Trade> GetTrades(int userId)
         {
             List<Trade> TradesList = new List<Trade>();
             Dictionary<string, object> userIdDict = new Dictionary<string, object>()
@@ -195,34 +196,78 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static string IncreaseBalance(string Address, int userId)
+        internal static float IncreaseBalance(int userId, float amount)
         {
             Dictionary<string, object> userIdDict = new Dictionary<string, object>()
             {
-                {"user_id", userId }
+                {"user_id", userId },
+                {"amount", amount }
             };
 
             var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/top_up", userIdDict);
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                return "Баланс пополнен успешно";
+                return float.Parse(JsonResult["results"].ToString());
             }
             else
             {
+                return 0;
+            }
+        }
+
+        internal static float GetOverallBalance(int userId)
+        {
+            Dictionary<string, object> userIdDict = new Dictionary<string, object>()
+            {
+                {"user_id", userId }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/overall_balance", userIdDict);
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                return float.Parse(JsonResult["results"].ToString());
+            }
+            else
+            {
+                PrintError(JsonResult["message"].ToString());
+                return 0;
+            }
+        }
+
+        internal static Trade Sell(string Symbol, int userId)
+        {
+            Dictionary<string, object> CoinDict = new Dictionary<string, object>()
+            {
+                {"symbol", Symbol },
+                {"user_id", userId }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/sell", CoinDict);
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                return Trade.FromJson((Dictionary<string, object>)JsonResult["results"]);
+            }
+            else
+            {
+                PrintError(JsonResult["message"].ToString());
                 return null;
             }
         }
 
-        internal static List<float> GetChartData(string Address, string Symbol)
+        internal static List<float> GetChartData(string Symbol, string interval = "1h", int limit = 10)
         {
             List<float> ChartData = new List<float>();
             Dictionary<string, object> CoinDict = new Dictionary<string, object>()
             {
-                {"symbol", Symbol }
+                {"symbol", Symbol },
+                {"interval", interval },
+                {"limit", limit }
             };
 
-            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_chart_data", CoinDict);
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_history", CoinDict);
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {            

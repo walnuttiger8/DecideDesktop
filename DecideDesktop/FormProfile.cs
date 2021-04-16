@@ -25,28 +25,28 @@ namespace DecideDesktop
 
             if (comboBoxChoiseCurrency.SelectedItem.Equals("BTCUSDT"))
             {
-                var BTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "BTCUSDT", ViewMain.userId));
+                var BTCPanel = createWallet(UserController.AddCoin("BTCUSDT", ViewMain.userId));
                 BTCPanel.Name = "BTCPanel";
                 WalletsPanel.Add(BTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("BTCUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETHUSDT"))
             {
-                var ETHPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "ETHUSDT", ViewMain.userId));
+                var ETHPanel = createWallet(UserController.AddCoin("ETHUSDT", ViewMain.userId));
                 ETHPanel.Name = "ETHPanel";
                 WalletsPanel.Add(ETHPanel);
                 comboBoxChoiseCurrency.Items.Remove("ETHUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTCUSDT"))
             {
-                var LTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "LTCUSDT", ViewMain.userId));
+                var LTCPanel = createWallet(UserController.AddCoin("LTCUSDT", ViewMain.userId));
                 LTCPanel.Name = "LTCPanel";
                 WalletsPanel.Add(LTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("LTCUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRPUSDT"))
             {
-                var XRPPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "XRPUSDT", ViewMain.userId));
+                var XRPPanel = createWallet(UserController.AddCoin("XRPUSDT", ViewMain.userId));
                 XRPPanel.Name = "LTCPanel";
                 WalletsPanel.Add(XRPPanel);
                 comboBoxChoiseCurrency.Items.Remove("XRPUSDT");
@@ -130,7 +130,7 @@ namespace DecideDesktop
 
         private void FormProfile_Load(object sender, EventArgs e)
         {
-            List<Wallet> wallets = UserController.GetWallets(HTTPClient.Address, ViewMain.userId);
+            List<Wallet> wallets = UserController.GetWallets(ViewMain.userId);
             if (wallets.Count != 0)
             {
                 foreach (Wallet wallet in wallets)

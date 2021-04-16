@@ -48,7 +48,6 @@ namespace DecideDesktop
             this.picExit = new System.Windows.Forms.PictureBox();
             this.picProfile = new System.Windows.Forms.PictureBox();
             this.panelBottom = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panelFill = new System.Windows.Forms.Panel();
             this.panelSidePart.SuspendLayout();
             this.panelCurrencySubmenu.SuspendLayout();
@@ -56,7 +55,6 @@ namespace DecideDesktop
             this.panelProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
-            this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSidePart
@@ -72,7 +70,7 @@ namespace DecideDesktop
             this.panelSidePart.Controls.Add(this.panelProfile);
             this.panelSidePart.Location = new System.Drawing.Point(0, 0);
             this.panelSidePart.Name = "panelSidePart";
-            this.panelSidePart.Size = new System.Drawing.Size(222, 603);
+            this.panelSidePart.Size = new System.Drawing.Size(222, 701);
             this.panelSidePart.TabIndex = 0;
             // 
             // panelCurrencySubmenu
@@ -350,20 +348,11 @@ namespace DecideDesktop
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.panelBottom.Controls.Add(this.richTextBox1);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 422);
+            this.panelBottom.Location = new System.Drawing.Point(0, 520);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(934, 164);
+            this.panelBottom.Size = new System.Drawing.Size(1074, 164);
             this.panelBottom.TabIndex = 5;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(228, 13);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(694, 139);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
             // 
             // panelFill
             // 
@@ -373,14 +362,14 @@ namespace DecideDesktop
             this.panelFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(64)))));
             this.panelFill.Location = new System.Drawing.Point(222, 0);
             this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(712, 426);
+            this.panelFill.Size = new System.Drawing.Size(852, 524);
             this.panelFill.TabIndex = 6;
             // 
             // ViewMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 586);
+            this.ClientSize = new System.Drawing.Size(1074, 684);
             this.Controls.Add(this.panelSidePart);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelFill);
@@ -400,7 +389,6 @@ namespace DecideDesktop
             this.panelProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
-            this.panelBottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -426,6 +414,5 @@ namespace DecideDesktop
         private System.Windows.Forms.Panel panelBottom;
         private System.Windows.Forms.Panel panelFill;
         private System.Windows.Forms.Button btnXRP;
-        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
