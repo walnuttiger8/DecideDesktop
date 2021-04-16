@@ -25,28 +25,28 @@ namespace DecideDesktop
 
             if (comboBoxChoiseCurrency.SelectedItem.Equals("BTCUSDT"))
             {
-                var BTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "BTCUSDT", ViewMain.userId));
+                var BTCPanel = createWallet(UserController.AddCoin("BTCUSDT", ViewMain.userId));
                 BTCPanel.Name = "BTCPanel";
                 WalletsPanel.Add(BTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("BTCUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETHUSDT"))
             {
-                var ETHPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "ETHUSDT", ViewMain.userId));
+                var ETHPanel = createWallet(UserController.AddCoin("ETHUSDT", ViewMain.userId));
                 ETHPanel.Name = "ETHPanel";
                 WalletsPanel.Add(ETHPanel);
                 comboBoxChoiseCurrency.Items.Remove("ETHUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTCUSDT"))
             {
-                var LTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "LTCUSDT", ViewMain.userId));
+                var LTCPanel = createWallet(UserController.AddCoin("LTCUSDT", ViewMain.userId));
                 LTCPanel.Name = "LTCPanel";
                 WalletsPanel.Add(LTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("LTCUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRPUSDT"))
             {
-                var XRPPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "XRPUSDT", ViewMain.userId));
+                var XRPPanel = createWallet(UserController.AddCoin("XRPUSDT", ViewMain.userId));
                 XRPPanel.Name = "LTCPanel";
                 WalletsPanel.Add(XRPPanel);
                 comboBoxChoiseCurrency.Items.Remove("XRPUSDT");
@@ -88,17 +88,28 @@ namespace DecideDesktop
                 Text =wallet.Amount.ToString(),
                 Font = new System.Drawing.Font("Monsterrat", 14.0f),
             };
-            BTCamount.Left = 230;
+            BTCamount.Left = 180;
             BTCamount.Top = 10;
             BTCamount.ForeColor = Color.White;
             panel.Controls.Add(BTCamount);
+
+            Label price = new Label()
+            {
+                Location = new System.Drawing.Point(60, 10),
+                Text = (wallet.Amount * wallet.Coin.Price) + "$",
+                Font = new System.Drawing.Font("Monsterrat", 14.0f),
+            };
+            price.Left = 370;
+            price.Top = 10;
+            price.ForeColor = Color.LightGreen;
+            panel.Controls.Add(price);
 
             Label BTCpercent = new Label()
             {
                 Location = new System.Drawing.Point(60, 10),
                 Text = wallet.Percent.ToString() + " %",
                 Font = new System.Drawing.Font("Monsterrat", 14.0f),
-                Left = 430,
+                Left = 560,
                 Top = 10,
                 ForeColor = Color.White,
             };
@@ -106,11 +117,11 @@ namespace DecideDesktop
 
             Label labelSell = new Label()
             {
-                Size = new Size(100, 30),
+                Size = new Size(20, 28),
                 Text = "X",
                 Font = new System.Drawing.Font("Arial", 18.0f),
                 Top = 10,
-                Left = 550,
+                Left = 720,
                 ForeColor = Color.Red,
                 FlatStyle = FlatStyle.Flat       
             };
@@ -119,7 +130,7 @@ namespace DecideDesktop
 
             Panel panelLine = new Panel()
             {
-                Size = new Size(510, 1),
+                Size = new Size(700, 1),
                 Top = 39,
                 Left = 20
             };
@@ -130,7 +141,7 @@ namespace DecideDesktop
 
         private void FormProfile_Load(object sender, EventArgs e)
         {
-            List<Wallet> wallets = UserController.GetWallets(HTTPClient.Address, ViewMain.userId);
+            List<Wallet> wallets = UserController.GetWallets(ViewMain.userId);
             if (wallets.Count != 0)
             {
                 foreach (Wallet wallet in wallets)
@@ -140,6 +151,22 @@ namespace DecideDesktop
                 }
             }
             labelUserBalance.Text += $" {ViewMain.thisUser.Balance}$";
+        }
+       
+
+        private void labelPercentQuestion_MouseMove(object sender, MouseEventArgs e)
+        {
+            labelQw.Text = "Процент от \nвашего баланса, использованный \nдля покупки валюты";
+            labelPercentQuestion.Text = "";
+            labelQw.ForeColor = Color.Yellow;
+
+        }
+
+        private void labelPercentQuestion_MouseLeave(object sender, EventArgs e)
+        {
+            labelQw.Text = "";
+            labelPercentQuestion.Text = "?";
+            labelPercentQuestion.ForeColor = Color.White;
         }
     }
 }

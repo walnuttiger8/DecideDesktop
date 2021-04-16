@@ -15,6 +15,10 @@ namespace DecideDesktop
     {
         public static ViewSignIn SignIn = new ViewSignIn();
         public static ViewSignUp SignUp = new ViewSignUp();
+        internal static List<float> ETHGraphic = new List<float>();
+        internal static List<float> BTCGraphic = new List<float>();
+        internal static List<float> LTCGraphic = new List<float>();
+        internal static List<float> XRPGraphic = new List<float>();
         internal static int userId;
         internal static User thisUser;
         public ViewMain()
@@ -224,7 +228,7 @@ namespace DecideDesktop
         }
 
         private void ViewMain_Load(object sender, EventArgs e)
-        {    
+        {
             if (userId != 0)
             {
                 labelUsername.Text = thisUser.Name;
