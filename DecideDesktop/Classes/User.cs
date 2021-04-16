@@ -23,5 +23,10 @@ namespace DecideDesktop
         }
 
         public User() { } 
+
+        internal static User FromJson(Dictionary<string, object> JsonResult)
+        {
+            return new User(JsonResult["name"].ToString(), JsonResult["email"].ToString(), float.Parse(JsonResult["balance"].ToString()));
+        }
     }
 }

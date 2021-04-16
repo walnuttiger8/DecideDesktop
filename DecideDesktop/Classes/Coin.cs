@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace DecideDesktop.Classes
         {
             this.Symbol = Symbol;
             this.Price = Price;
+        }
+
+        internal static Coin FromJson(string JsonResult)
+        {
+            var JsonDeser = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult);
+            return new Coin(JsonDeser["symbol"].ToString(), float.Parse(JsonDeser["price"].ToString()));
         }
     }
 }

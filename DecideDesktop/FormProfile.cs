@@ -22,41 +22,36 @@ namespace DecideDesktop
    
         private void label1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (comboBoxChoiseCurrency.SelectedItem.Equals("BTC"))
-                {
-                    var BTCPanel = createWallet(new Wallet(new Coin("BTC", 64000), 0.0150f, 25));
-                    BTCPanel.Name = "BTCPanel";
-                    WalletsPanel.Add(BTCPanel);
-                    comboBoxChoiseCurrency.Items.Remove("BTC");
-                }
-                else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETH"))
-                {
-                    var ETHPanel = createWallet(new Wallet(new Coin("ETH", 64000), 0.0150f, 25));
-                    ETHPanel.Name = "ETHPanel";
-                    WalletsPanel.Add(ETHPanel);
-                    comboBoxChoiseCurrency.Items.Remove("ETH");
-                }
-                else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTC"))
-                {
-                    var LTCPanel = createWallet(new Wallet(new Coin("LTC", 64000), 0.0150f, 25));
-                    LTCPanel.Name = "LTCPanel";
-                    WalletsPanel.Add(LTCPanel);
-                    comboBoxChoiseCurrency.Items.Remove("LTC");
-                }
-                else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRP"))
-                {
-                    var XRPPanel = createWallet(new Wallet(new Coin("XRP", 64000), 0.0150f, 25));
-                    XRPPanel.Name = "XRPPanel";
-                    WalletsPanel.Add(XRPPanel);
-                    comboBoxChoiseCurrency.Items.Remove("XRP");
-                }
-            }
-            catch
-            {
 
+            if (comboBoxChoiseCurrency.SelectedItem.Equals("BTCUSDT"))
+            {
+                var BTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "BTCUSDT", ViewMain.userId));
+                BTCPanel.Name = "BTCPanel";
+                WalletsPanel.Add(BTCPanel);
+                comboBoxChoiseCurrency.Items.Remove("BTCUSDT");
             }
+            else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETHUSDT"))
+            {
+                var ETHPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "ETHUSDT", ViewMain.userId));
+                ETHPanel.Name = "ETHPanel";
+                WalletsPanel.Add(ETHPanel);
+                comboBoxChoiseCurrency.Items.Remove("ETHUSDT");
+            }
+            else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTCUSDT"))
+            {
+                var LTCPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "LTCUSDT", ViewMain.userId));
+                LTCPanel.Name = "LTCPanel";
+                WalletsPanel.Add(LTCPanel);
+                comboBoxChoiseCurrency.Items.Remove("LTCUSDT");
+            }
+            else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRPUSDT"))
+            {
+                var XRPPanel = createWallet(UserController.AddCoin(HTTPClient.Address, "XRPUSDT", ViewMain.userId));
+                XRPPanel.Name = "LTCPanel";
+                WalletsPanel.Add(XRPPanel);
+                comboBoxChoiseCurrency.Items.Remove("XRPUSDT");
+            }            
+
         }
 
         private void labelAddCurrency_MouseMove(object sender, MouseEventArgs e)
@@ -92,7 +87,6 @@ namespace DecideDesktop
                 Location = new System.Drawing.Point(60, 10),
                 Text =wallet.Amount.ToString(),
                 Font = new System.Drawing.Font("Monsterrat", 14.0f),
-
             };
             BTCamount.Left = 230;
             BTCamount.Top = 10;
@@ -107,8 +101,6 @@ namespace DecideDesktop
                 Left = 430,
                 Top = 10,
                 ForeColor = Color.White,
-                
-
             };
             panel.Controls.Add(BTCpercent);
 
@@ -120,13 +112,10 @@ namespace DecideDesktop
                 Top = 10,
                 Left = 550,
                 ForeColor = Color.Red,
-                FlatStyle = FlatStyle.Flat
-                
-                
+                FlatStyle = FlatStyle.Flat       
             };
             labelSell.Click+= new EventHandler(wallet.Sell);
             panel.Controls.Add(labelSell);
-
 
             Panel panelLine = new Panel()
             {
@@ -139,5 +128,18 @@ namespace DecideDesktop
             return panel;
         }
 
+        private void FormProfile_Load(object sender, EventArgs e)
+        {
+            List<Wallet> wallets = UserController.GetWallets(HTTPClient.Address, ViewMain.userId);
+            if (wallets.Count != 0)
+            {
+                foreach (Wallet wallet in wallets)
+                {
+                    createWallet(wallet);
+                    comboBoxChoiseCurrency.Items.Remove(wallet.Coin.Symbol);
+                }
+            }
+            labelUserBalance.Text += $" {ViewMain.thisUser.Balance}$";
+        }
     }
 }

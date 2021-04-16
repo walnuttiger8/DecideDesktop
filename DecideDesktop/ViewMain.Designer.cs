@@ -48,6 +48,7 @@ namespace DecideDesktop
             this.picExit = new System.Windows.Forms.PictureBox();
             this.picProfile = new System.Windows.Forms.PictureBox();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panelFill = new System.Windows.Forms.Panel();
             this.panelSidePart.SuspendLayout();
             this.panelCurrencySubmenu.SuspendLayout();
@@ -55,6 +56,7 @@ namespace DecideDesktop
             this.panelProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
+            this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSidePart
@@ -348,11 +350,20 @@ namespace DecideDesktop
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.panelBottom.Controls.Add(this.richTextBox1);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 422);
             this.panelBottom.Name = "panelBottom";
             this.panelBottom.Size = new System.Drawing.Size(934, 164);
             this.panelBottom.TabIndex = 5;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(228, 13);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(694, 139);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // panelFill
             // 
@@ -389,6 +400,7 @@ namespace DecideDesktop
             this.panelProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
+            this.panelBottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -414,5 +426,6 @@ namespace DecideDesktop
         private System.Windows.Forms.Panel panelBottom;
         private System.Windows.Forms.Panel panelFill;
         private System.Windows.Forms.Button btnXRP;
+        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

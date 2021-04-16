@@ -135,15 +135,27 @@ namespace DecideDesktop
 
         private void buttonSignInSignIn_Click(object sender, EventArgs e)
         {
-            if(Classes.FieldsCheck.EMailCheck(textBoxSignInProfile.Text) &&
+            if (Classes.FieldsCheck.UserNameCheck(textBoxSignInProfile.Text) &&
                 Classes.FieldsCheck.PasswordCheck(textBoxSignInPassword.Text))
             {
-                Dictionary<string, object> SignInValues = new Dictionary<string, object>();
-                SignInValues.Add("email", textBoxSignInProfile.Text);
-                SignInValues.Add("password", textBoxSignInPassword.Text);
+                Dictionary<string, object> SignInValues = new Dictionary<string, object>()
+                {
+                    { "email", textBoxSignInProfile.Text },
+                    { "password", textBoxSignInPassword.Text}
+                };
+
 
                 int userId = UserController.LogIn(HTTPClient.Address, SignInValues);
+                ViewMain.userId = userId;
+                ViewMain.thisUser = UserController.GetUser(HTTPClient.Address, userId);
+
+                ViewMain viewMain = new ViewMain();
+
+                viewMain.Show();
+                this.Visible = false;
+                SignUp.Visible = false;           
             }
+
             else
             {
                 textBoxSignInPassword.ForeColor = Color.Red;
@@ -151,7 +163,6 @@ namespace DecideDesktop
                 panelPasswordSignIn.BackColor = Color.Red;
                 panelProfileSignIn.BackColor = Color.Red;
             }
-   
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -155,24 +155,25 @@ namespace DecideDesktop
 
         private void buttonSignInSignUp_Click(object sender, EventArgs e)
         {
-            if(Classes.FieldsCheck.UserNameCheck(textBoxProfileSignUp.Text) &&
+            if (Classes.FieldsCheck.UserNameCheck(textBoxProfileSignUp.Text) &&
                 Classes.FieldsCheck.PasswordCheck(textBoxPasswordSignUp.Text) &&
                     Classes.FieldsCheck.EMailCheck(textBoxEmailSignUp.Text))
             {
-                Dictionary<string, object> SignUpValues = new Dictionary<string, object>();
-                SignUpValues.Add("username", textBoxProfileSignUp.Text);
-                SignUpValues.Add("password", textBoxPasswordSignUp.Text);
-                SignUpValues.Add("email", textBoxEmailSignUp.Text);
+                Dictionary<string, object> SignUpValues = new Dictionary<string, object>()
+                {
+                    { "username", textBoxProfileSignUp.Text },
+                    { "password", textBoxPasswordSignUp.Text},
+                    { "email", textBoxEmailSignUp.Text }
+                };
 
                 thisUserId = UserController.SignUp(HTTPClient.Address, SignUpValues);
                 if (thisUserId != 0)
                 {
-                    MessageBox.Show("Успех зарегаться");
+                    MessageBox.Show("Пользователь успешно зарегистрирован", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    MessageBox.Show("Неудача зарегаться");
-
+                    MessageBox.Show("Пользователь не зарегистрирован", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else

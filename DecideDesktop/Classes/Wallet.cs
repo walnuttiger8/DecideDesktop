@@ -21,7 +21,14 @@ namespace DecideDesktop.Classes
         }
         internal void Sell(object sender, EventArgs e)
         {
-            MessageBox.Show("Продано");
+            
+        }
+
+        internal static Wallet FromJson(Dictionary<string, object> JsonResult)
+        {
+            Coin coin = Coin.FromJson(JsonResult["coin"].ToString());
+
+            return new Wallet(coin, float.Parse(JsonResult["amount"].ToString()), float.Parse(JsonResult["percent"].ToString()));
         }
     }
 }

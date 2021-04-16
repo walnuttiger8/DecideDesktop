@@ -38,6 +38,7 @@ namespace DecideDesktop
             this.label1 = new System.Windows.Forms.Label();
             this.panelFill = new System.Windows.Forms.Panel();
             this.labelWalletHavent = new System.Windows.Forms.Label();
+            this.labelUserBalance = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelTemp.SuspendLayout();
             this.panelFill.SuspendLayout();
@@ -52,10 +53,10 @@ namespace DecideDesktop
             this.comboBoxChoiseCurrency.ForeColor = System.Drawing.Color.White;
             this.comboBoxChoiseCurrency.FormattingEnabled = true;
             this.comboBoxChoiseCurrency.Items.AddRange(new object[] {
-            "BTC",
-            "ETH",
-            "LTC",
-            "XRP"});
+            "BTCUSDT",
+            "ETHUSDT",
+            "LTCUSDT",
+            "XRPUSDT"});
             this.comboBoxChoiseCurrency.Location = new System.Drawing.Point(47, 16);
             this.comboBoxChoiseCurrency.Name = "comboBoxChoiseCurrency";
             this.comboBoxChoiseCurrency.Size = new System.Drawing.Size(158, 26);
@@ -78,6 +79,7 @@ namespace DecideDesktop
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
+            this.panel1.Controls.Add(this.labelUserBalance);
             this.panel1.Controls.Add(this.labelAddCurrency);
             this.panel1.Controls.Add(this.comboBoxChoiseCurrency);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -151,6 +153,17 @@ namespace DecideDesktop
             this.labelWalletHavent.TabIndex = 0;
             this.labelWalletHavent.Text = "У вас еще нет кошельков";
             // 
+            // labelUserBalance
+            // 
+            this.labelUserBalance.AutoSize = true;
+            this.labelUserBalance.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUserBalance.ForeColor = System.Drawing.Color.White;
+            this.labelUserBalance.Location = new System.Drawing.Point(529, 16);
+            this.labelUserBalance.Name = "labelUserBalance";
+            this.labelUserBalance.Size = new System.Drawing.Size(88, 26);
+            this.labelUserBalance.TabIndex = 3;
+            this.labelUserBalance.Text = "Баланс:";
+            // 
             // FormProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +178,7 @@ namespace DecideDesktop
             this.Name = "FormProfile";
             this.ShowInTaskbar = false;
             this.Text = "FormProfile";
+            this.Load += new System.EventHandler(this.FormProfile_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelTemp.ResumeLayout(false);
@@ -186,5 +200,6 @@ namespace DecideDesktop
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelWalletHavent;
+        public System.Windows.Forms.Label labelUserBalance;
     }
 }

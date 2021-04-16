@@ -15,6 +15,8 @@ namespace DecideDesktop
     {
         public static ViewSignIn SignIn = new ViewSignIn();
         public static ViewSignUp SignUp = new ViewSignUp();
+        internal static int userId;
+        internal static User thisUser;
         public ViewMain()
         {
             InitializeComponent();
@@ -222,26 +224,16 @@ namespace DecideDesktop
         }
 
         private void ViewMain_Load(object sender, EventArgs e)
-        {
+        {    
+            if (userId != 0)
+            {
+                labelUsername.Text = thisUser.Name;
+            }
+
+            openChildForm(new FormMain());
             showSubMenu(panelMenuSubmenu);
             showSubMenu(panelCurrencySubmenu);
             FormProfile.ViewMain = this;
-
-            openChildForm(new FormMain());
-            Coin BTC = new Coin("BTCUSDT", 64000);
-            Wallet BTCWallet = new Wallet(BTC, 0.015F, 25);
-
-            Coin XRP = new Coin("XRPUSDT", 1.70F);
-            Wallet XRPWallet = new Wallet(XRP, 500, 50);
-
-            Trade BTC_buy = new Trade(BTCWallet, BTCWallet.Coin.Price, 0.001F, DateTime.UtcNow.ToString(), "buy");
-            Trade XRP_sell = new Trade(XRPWallet, XRPWallet.Coin.Price, 400, DateTime.UtcNow.ToString(), "sell");
-
-            List<Trade> Trades = new List<Trade>()
-            {
-                BTC_buy,
-                XRP_sell
-            };
         }
         private Form activeForm = null;
         private void openChildForm(Form childForm)
@@ -256,8 +248,6 @@ namespace DecideDesktop
             panelFill.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            
-
         }
 
         private void ViewMain_FormClosing(object sender, FormClosingEventArgs e)
