@@ -138,7 +138,34 @@ namespace DecideDesktop.Classes
                 PrintError(JsonResult["message"].ToString());
                 return null;
             }
+        }
 
+        internal static List<Coin> GetCoinPrices(List<string> SymbolList)
+        {
+            List<Coin> ResultCoins = new List<Coin>();
+            Dictionary<string, object> symbolData = new Dictionary<string, object>()
+            {
+                { "symbols", SymbolList}
+            };
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_coins", symbolData);
+
+            var CoinLists = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(JsonResult["results"].ToString());
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                foreach (Dictionary<string, object> Dictionary in CoinLists)
+                {
+                    Coin coin = Coin.FromJson(Dictionary);
+                    ResultCoins.Add(coin);
+                }
+                return ResultCoins;
+            }
+            else
+            {
+                PrintError(JsonResult["message"].ToString());
+                return null;
+            }
         }
 
         internal static Wallet AddCoin(string Symbol, int userId, float percent = 100)

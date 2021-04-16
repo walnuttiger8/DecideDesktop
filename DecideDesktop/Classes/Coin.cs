@@ -23,5 +23,10 @@ namespace DecideDesktop.Classes
             var JsonDeser = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult);
             return new Coin(JsonDeser["symbol"].ToString(), float.Parse(JsonDeser["price"].ToString()));
         }
+
+        internal static Coin FromJson(Dictionary<string, object> JsonResult)
+        {
+            return new Coin(JsonResult["symbol"].ToString(), float.Parse(JsonResult["price"].ToString()));
+        }
     }
 }

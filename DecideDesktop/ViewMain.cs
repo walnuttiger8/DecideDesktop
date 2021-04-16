@@ -233,11 +233,11 @@ namespace DecideDesktop
         private void ViewMain_Load(object sender, EventArgs e)
         {
             timer1.Start();
-            List<Label> Coints = new List<Label>()
+            Coints = new List<Label>()
             {
                 labelConstBTC,labelConstETH,labelConstLTC,labelConstXRP
             };
-            List<Label> Prices = new List<Label>()
+            Prices = new List<Label>()
             {
                 labelConstBTCPrice,labelConstETHPrice,labelConstLTCPrice,labelConstXRPPrice
             };
@@ -303,7 +303,7 @@ namespace DecideDesktop
        
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for(int i = 0;i<Coints.Count;i++)
+            for(int i = 0;i < Coints.Count;i++)
             {
                 String symbol = Coints[i].Text;
                 Coin coin = UserController.GetCoin(symbol);
