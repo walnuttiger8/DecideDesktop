@@ -16,6 +16,7 @@ namespace DecideDesktop
 {
     public partial class FormMain : Form
     {
+        public static List<float> GraphicData = new List<float>();
         public FormMain()
         {
             InitializeComponent();
@@ -23,31 +24,35 @@ namespace DecideDesktop
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            DrawGraphic(ViewMain.BTCGraphic);
+        }
+        public static  void DrawGraphic(List<float> GraphicData)
+        {
             SeriesCollection series = new SeriesCollection();
             ChartValues<int> ContValues = new ChartValues<int>();
             DateTime dateTime = DateTime.Now;
-            
+
             List<string> dates = new List<string>();
-            for(int i = ViewMain.BTCGraphic.Count; i>0;i--)
+            for (int i = GraphicData.Count; i > 0; i--)
             {
-                dates.Add(i+"");
+                dates.Add(i + "");
             }
-            int b = ViewMain.BTCGraphic.Count;
-            for(int i = 0;i<ViewMain.BTCGraphic.Count;i++)
+            int b = GraphicData.Count;
+            for (int i = 0; i < GraphicData.Count; i++)
             {
-                ContValues.Add((int)ViewMain.BTCGraphic[i]);
+                ContValues.Add((int)GraphicData[i]);
             }
-            BTCGraphic.AxisX.Clear();
-             
-            BTCGraphic.AxisX.Add(new Axis()
+            Graphic.AxisX.Clear();
+
+            Graphic.AxisX.Add(new Axis()
             {
                 Title = "Time",
-                Labels = dates ,
-                
+                Labels = dates,
+
             });
-            
+
             LineSeries line = new LineSeries();
-            
+
             line.Title = "";
             line.Values = ContValues;
             var converter = new System.Windows.Media.BrushConverter();
@@ -56,10 +61,9 @@ namespace DecideDesktop
 
             series.Add(line);
 
-            BTCGraphic.Series = series;
-
-
+            Graphic.Series = series;
         }
+       
 
         private void btnlive_Click(object sender, EventArgs e)
         {

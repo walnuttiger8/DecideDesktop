@@ -49,19 +49,19 @@ namespace DecideDesktop
             this.picExit = new System.Windows.Forms.PictureBox();
             this.picProfile = new System.Windows.Forms.PictureBox();
             this.panelBottom = new System.Windows.Forms.Panel();
-            this.panelFill = new System.Windows.Forms.Panel();
-            this.panelConstBTC = new System.Windows.Forms.Panel();
-            this.labelConstBTC = new System.Windows.Forms.Label();
-            this.labelConstBTCPrice = new System.Windows.Forms.Label();
-            this.panelConstETH = new System.Windows.Forms.Panel();
-            this.labelConstETHPrice = new System.Windows.Forms.Label();
-            this.labelConstETH = new System.Windows.Forms.Label();
-            this.panelConstLTC = new System.Windows.Forms.Panel();
-            this.labelConstLTCPrice = new System.Windows.Forms.Label();
-            this.labelConstLTC = new System.Windows.Forms.Label();
             this.panelConstXRP = new System.Windows.Forms.Panel();
             this.labelConstXRPPrice = new System.Windows.Forms.Label();
             this.labelConstXRP = new System.Windows.Forms.Label();
+            this.panelConstLTC = new System.Windows.Forms.Panel();
+            this.labelConstLTCPrice = new System.Windows.Forms.Label();
+            this.labelConstLTC = new System.Windows.Forms.Label();
+            this.panelConstETH = new System.Windows.Forms.Panel();
+            this.labelConstETHPrice = new System.Windows.Forms.Label();
+            this.labelConstETH = new System.Windows.Forms.Label();
+            this.panelConstBTC = new System.Windows.Forms.Panel();
+            this.labelConstBTCPrice = new System.Windows.Forms.Label();
+            this.labelConstBTC = new System.Windows.Forms.Label();
+            this.panelFill = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelSidePart.SuspendLayout();
             this.panelCurrencySubmenu.SuspendLayout();
@@ -70,10 +70,10 @@ namespace DecideDesktop
             ((System.ComponentModel.ISupportInitialize)(this.picExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             this.panelBottom.SuspendLayout();
-            this.panelConstBTC.SuspendLayout();
-            this.panelConstETH.SuspendLayout();
-            this.panelConstLTC.SuspendLayout();
             this.panelConstXRP.SuspendLayout();
+            this.panelConstLTC.SuspendLayout();
+            this.panelConstETH.SuspendLayout();
+            this.panelConstBTC.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSidePart
@@ -377,113 +377,6 @@ namespace DecideDesktop
             this.panelBottom.Size = new System.Drawing.Size(1074, 164);
             this.panelBottom.TabIndex = 5;
             // 
-            // panelFill
-            // 
-            this.panelFill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(64)))));
-            this.panelFill.Location = new System.Drawing.Point(222, 0);
-            this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(852, 524);
-            this.panelFill.TabIndex = 6;
-            // 
-            // panelConstBTC
-            // 
-            this.panelConstBTC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelConstBTC.Controls.Add(this.labelConstBTCPrice);
-            this.panelConstBTC.Controls.Add(this.labelConstBTC);
-            this.panelConstBTC.Location = new System.Drawing.Point(239, 13);
-            this.panelConstBTC.Name = "panelConstBTC";
-            this.panelConstBTC.Size = new System.Drawing.Size(260, 51);
-            this.panelConstBTC.TabIndex = 0;
-            // 
-            // labelConstBTC
-            // 
-            this.labelConstBTC.AutoSize = true;
-            this.labelConstBTC.Font = new System.Drawing.Font("Montserrat Light", 16F);
-            this.labelConstBTC.ForeColor = System.Drawing.Color.White;
-            this.labelConstBTC.Location = new System.Drawing.Point(3, 12);
-            this.labelConstBTC.Name = "labelConstBTC";
-            this.labelConstBTC.Size = new System.Drawing.Size(58, 30);
-            this.labelConstBTC.TabIndex = 0;
-            this.labelConstBTC.Text = "BTC";
-            // 
-            // labelConstBTCPrice
-            // 
-            this.labelConstBTCPrice.AutoSize = true;
-            this.labelConstBTCPrice.Font = new System.Drawing.Font("Montserrat Light", 16F);
-            this.labelConstBTCPrice.ForeColor = System.Drawing.Color.White;
-            this.labelConstBTCPrice.Location = new System.Drawing.Point(165, 12);
-            this.labelConstBTCPrice.Name = "labelConstBTCPrice";
-            this.labelConstBTCPrice.Size = new System.Drawing.Size(0, 30);
-            this.labelConstBTCPrice.TabIndex = 1;
-            // 
-            // panelConstETH
-            // 
-            this.panelConstETH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelConstETH.Controls.Add(this.labelConstETHPrice);
-            this.panelConstETH.Controls.Add(this.labelConstETH);
-            this.panelConstETH.Location = new System.Drawing.Point(239, 92);
-            this.panelConstETH.Name = "panelConstETH";
-            this.panelConstETH.Size = new System.Drawing.Size(260, 51);
-            this.panelConstETH.TabIndex = 2;
-            // 
-            // labelConstETHPrice
-            // 
-            this.labelConstETHPrice.AutoSize = true;
-            this.labelConstETHPrice.Font = new System.Drawing.Font("Montserrat Light", 16F);
-            this.labelConstETHPrice.ForeColor = System.Drawing.Color.White;
-            this.labelConstETHPrice.Location = new System.Drawing.Point(165, 12);
-            this.labelConstETHPrice.Name = "labelConstETHPrice";
-            this.labelConstETHPrice.Size = new System.Drawing.Size(0, 30);
-            this.labelConstETHPrice.TabIndex = 1;
-            // 
-            // labelConstETH
-            // 
-            this.labelConstETH.AutoSize = true;
-            this.labelConstETH.Font = new System.Drawing.Font("Montserrat Light", 16F);
-            this.labelConstETH.ForeColor = System.Drawing.Color.White;
-            this.labelConstETH.Location = new System.Drawing.Point(3, 12);
-            this.labelConstETH.Name = "labelConstETH";
-            this.labelConstETH.Size = new System.Drawing.Size(58, 30);
-            this.labelConstETH.TabIndex = 0;
-            this.labelConstETH.Text = "ETH";
-            // 
-            // panelConstLTC
-            // 
-            this.panelConstLTC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelConstLTC.Controls.Add(this.labelConstLTCPrice);
-            this.panelConstLTC.Controls.Add(this.labelConstLTC);
-            this.panelConstLTC.Location = new System.Drawing.Point(561, 15);
-            this.panelConstLTC.Name = "panelConstLTC";
-            this.panelConstLTC.Size = new System.Drawing.Size(260, 51);
-            this.panelConstLTC.TabIndex = 2;
-            // 
-            // labelConstLTCPrice
-            // 
-            this.labelConstLTCPrice.AutoSize = true;
-            this.labelConstLTCPrice.Font = new System.Drawing.Font("Montserrat Light", 16F);
-            this.labelConstLTCPrice.ForeColor = System.Drawing.Color.White;
-            this.labelConstLTCPrice.Location = new System.Drawing.Point(165, 12);
-            this.labelConstLTCPrice.Name = "labelConstLTCPrice";
-            this.labelConstLTCPrice.Size = new System.Drawing.Size(0, 30);
-            this.labelConstLTCPrice.TabIndex = 1;
-            // 
-            // labelConstLTC
-            // 
-            this.labelConstLTC.AutoSize = true;
-            this.labelConstLTC.Font = new System.Drawing.Font("Montserrat Light", 16F);
-            this.labelConstLTC.ForeColor = System.Drawing.Color.White;
-            this.labelConstLTC.Location = new System.Drawing.Point(3, 12);
-            this.labelConstLTC.Name = "labelConstLTC";
-            this.labelConstLTC.Size = new System.Drawing.Size(53, 30);
-            this.labelConstLTC.TabIndex = 0;
-            this.labelConstLTC.Text = "LTC";
-            // 
             // panelConstXRP
             // 
             this.panelConstXRP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -492,7 +385,7 @@ namespace DecideDesktop
             this.panelConstXRP.Controls.Add(this.labelConstXRP);
             this.panelConstXRP.Location = new System.Drawing.Point(561, 92);
             this.panelConstXRP.Name = "panelConstXRP";
-            this.panelConstXRP.Size = new System.Drawing.Size(260, 51);
+            this.panelConstXRP.Size = new System.Drawing.Size(324, 51);
             this.panelConstXRP.TabIndex = 2;
             // 
             // labelConstXRPPrice
@@ -500,10 +393,11 @@ namespace DecideDesktop
             this.labelConstXRPPrice.AutoSize = true;
             this.labelConstXRPPrice.Font = new System.Drawing.Font("Montserrat Light", 16F);
             this.labelConstXRPPrice.ForeColor = System.Drawing.Color.White;
-            this.labelConstXRPPrice.Location = new System.Drawing.Point(165, 12);
+            this.labelConstXRPPrice.Location = new System.Drawing.Point(121, 12);
             this.labelConstXRPPrice.Name = "labelConstXRPPrice";
-            this.labelConstXRPPrice.Size = new System.Drawing.Size(0, 30);
+            this.labelConstXRPPrice.Size = new System.Drawing.Size(45, 30);
             this.labelConstXRPPrice.TabIndex = 1;
+            this.labelConstXRPPrice.Text = "0.0";
             // 
             // labelConstXRP
             // 
@@ -516,9 +410,119 @@ namespace DecideDesktop
             this.labelConstXRP.TabIndex = 0;
             this.labelConstXRP.Text = "XRP";
             // 
+            // panelConstLTC
+            // 
+            this.panelConstLTC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelConstLTC.Controls.Add(this.labelConstLTCPrice);
+            this.panelConstLTC.Controls.Add(this.labelConstLTC);
+            this.panelConstLTC.Location = new System.Drawing.Point(561, 15);
+            this.panelConstLTC.Name = "panelConstLTC";
+            this.panelConstLTC.Size = new System.Drawing.Size(324, 51);
+            this.panelConstLTC.TabIndex = 2;
+            // 
+            // labelConstLTCPrice
+            // 
+            this.labelConstLTCPrice.AutoSize = true;
+            this.labelConstLTCPrice.Font = new System.Drawing.Font("Montserrat Light", 16F);
+            this.labelConstLTCPrice.ForeColor = System.Drawing.Color.White;
+            this.labelConstLTCPrice.Location = new System.Drawing.Point(121, 10);
+            this.labelConstLTCPrice.Name = "labelConstLTCPrice";
+            this.labelConstLTCPrice.Size = new System.Drawing.Size(45, 30);
+            this.labelConstLTCPrice.TabIndex = 1;
+            this.labelConstLTCPrice.Text = "0.0";
+            // 
+            // labelConstLTC
+            // 
+            this.labelConstLTC.AutoSize = true;
+            this.labelConstLTC.Font = new System.Drawing.Font("Montserrat Light", 16F);
+            this.labelConstLTC.ForeColor = System.Drawing.Color.White;
+            this.labelConstLTC.Location = new System.Drawing.Point(3, 12);
+            this.labelConstLTC.Name = "labelConstLTC";
+            this.labelConstLTC.Size = new System.Drawing.Size(53, 30);
+            this.labelConstLTC.TabIndex = 0;
+            this.labelConstLTC.Text = "LTC";
+            // 
+            // panelConstETH
+            // 
+            this.panelConstETH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelConstETH.Controls.Add(this.labelConstETHPrice);
+            this.panelConstETH.Controls.Add(this.labelConstETH);
+            this.panelConstETH.Location = new System.Drawing.Point(239, 92);
+            this.panelConstETH.Name = "panelConstETH";
+            this.panelConstETH.Size = new System.Drawing.Size(316, 51);
+            this.panelConstETH.TabIndex = 2;
+            // 
+            // labelConstETHPrice
+            // 
+            this.labelConstETHPrice.AutoSize = true;
+            this.labelConstETHPrice.Font = new System.Drawing.Font("Montserrat Light", 16F);
+            this.labelConstETHPrice.ForeColor = System.Drawing.Color.White;
+            this.labelConstETHPrice.Location = new System.Drawing.Point(118, 12);
+            this.labelConstETHPrice.Name = "labelConstETHPrice";
+            this.labelConstETHPrice.Size = new System.Drawing.Size(45, 30);
+            this.labelConstETHPrice.TabIndex = 1;
+            this.labelConstETHPrice.Text = "0.0";
+            // 
+            // labelConstETH
+            // 
+            this.labelConstETH.AutoSize = true;
+            this.labelConstETH.Font = new System.Drawing.Font("Montserrat Light", 16F);
+            this.labelConstETH.ForeColor = System.Drawing.Color.White;
+            this.labelConstETH.Location = new System.Drawing.Point(3, 12);
+            this.labelConstETH.Name = "labelConstETH";
+            this.labelConstETH.Size = new System.Drawing.Size(58, 30);
+            this.labelConstETH.TabIndex = 0;
+            this.labelConstETH.Text = "ETH";
+            // 
+            // panelConstBTC
+            // 
+            this.panelConstBTC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelConstBTC.Controls.Add(this.labelConstBTCPrice);
+            this.panelConstBTC.Controls.Add(this.labelConstBTC);
+            this.panelConstBTC.Location = new System.Drawing.Point(239, 13);
+            this.panelConstBTC.Name = "panelConstBTC";
+            this.panelConstBTC.Size = new System.Drawing.Size(316, 51);
+            this.panelConstBTC.TabIndex = 0;
+            // 
+            // labelConstBTCPrice
+            // 
+            this.labelConstBTCPrice.AutoSize = true;
+            this.labelConstBTCPrice.Font = new System.Drawing.Font("Montserrat Light", 16F);
+            this.labelConstBTCPrice.ForeColor = System.Drawing.Color.White;
+            this.labelConstBTCPrice.Location = new System.Drawing.Point(118, 12);
+            this.labelConstBTCPrice.Name = "labelConstBTCPrice";
+            this.labelConstBTCPrice.Size = new System.Drawing.Size(45, 30);
+            this.labelConstBTCPrice.TabIndex = 1;
+            this.labelConstBTCPrice.Text = "0.0";
+            // 
+            // labelConstBTC
+            // 
+            this.labelConstBTC.AutoSize = true;
+            this.labelConstBTC.Font = new System.Drawing.Font("Montserrat Light", 16F);
+            this.labelConstBTC.ForeColor = System.Drawing.Color.White;
+            this.labelConstBTC.Location = new System.Drawing.Point(3, 12);
+            this.labelConstBTC.Name = "labelConstBTC";
+            this.labelConstBTC.Size = new System.Drawing.Size(58, 30);
+            this.labelConstBTC.TabIndex = 0;
+            this.labelConstBTC.Text = "BTC";
+            // 
+            // panelFill
+            // 
+            this.panelFill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelFill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(64)))));
+            this.panelFill.Location = new System.Drawing.Point(222, 0);
+            this.panelFill.Name = "panelFill";
+            this.panelFill.Size = new System.Drawing.Size(852, 524);
+            this.panelFill.TabIndex = 6;
+            // 
             // timer1
             // 
-            this.timer1.Interval = 10000;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ViewMain
@@ -546,14 +550,14 @@ namespace DecideDesktop
             ((System.ComponentModel.ISupportInitialize)(this.picExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
             this.panelBottom.ResumeLayout(false);
-            this.panelConstBTC.ResumeLayout(false);
-            this.panelConstBTC.PerformLayout();
-            this.panelConstETH.ResumeLayout(false);
-            this.panelConstETH.PerformLayout();
-            this.panelConstLTC.ResumeLayout(false);
-            this.panelConstLTC.PerformLayout();
             this.panelConstXRP.ResumeLayout(false);
             this.panelConstXRP.PerformLayout();
+            this.panelConstLTC.ResumeLayout(false);
+            this.panelConstLTC.PerformLayout();
+            this.panelConstETH.ResumeLayout(false);
+            this.panelConstETH.PerformLayout();
+            this.panelConstBTC.ResumeLayout(false);
+            this.panelConstBTC.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -580,17 +584,17 @@ namespace DecideDesktop
         private System.Windows.Forms.Panel panelFill;
         private System.Windows.Forms.Button btnXRP;
         private System.Windows.Forms.Panel panelConstXRP;
-        private System.Windows.Forms.Label labelConstXRPPrice;
         private System.Windows.Forms.Label labelConstXRP;
         private System.Windows.Forms.Panel panelConstLTC;
-        private System.Windows.Forms.Label labelConstLTCPrice;
         private System.Windows.Forms.Label labelConstLTC;
         private System.Windows.Forms.Panel panelConstETH;
-        private System.Windows.Forms.Label labelConstETHPrice;
         private System.Windows.Forms.Label labelConstETH;
         private System.Windows.Forms.Panel panelConstBTC;
-        private System.Windows.Forms.Label labelConstBTCPrice;
         private System.Windows.Forms.Label labelConstBTC;
         private System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.Label labelConstXRPPrice;
+        public System.Windows.Forms.Label labelConstLTCPrice;
+        public System.Windows.Forms.Label labelConstETHPrice;
+        public System.Windows.Forms.Label labelConstBTCPrice;
     }
 }

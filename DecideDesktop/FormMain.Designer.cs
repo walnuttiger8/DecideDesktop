@@ -30,12 +30,12 @@ namespace DecideDesktop
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.BTCGraphic = new LiveCharts.WinForms.CartesianChart();
-            this.btnlive = new System.Windows.Forms.Button();
-            this.btn15min = new System.Windows.Forms.Button();
-            this.btn1hour = new System.Windows.Forms.Button();
             this.btn1day = new System.Windows.Forms.Button();
+            this.btn1hour = new System.Windows.Forms.Button();
+            this.btn15min = new System.Windows.Forms.Button();
+            this.btnlive = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Graphic = new LiveCharts.WinForms.CartesianChart();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,55 +53,22 @@ namespace DecideDesktop
             this.panel1.Size = new System.Drawing.Size(696, 53);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // btn1day
             // 
-            this.panel2.Controls.Add(this.BTCGraphic);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 53);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(696, 322);
-            this.panel2.TabIndex = 1;
-            // 
-            // BTCGraphic
-            // 
-            this.BTCGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BTCGraphic.Location = new System.Drawing.Point(0, 0);
-            this.BTCGraphic.Name = "BTCGraphic";
-            this.BTCGraphic.Size = new System.Drawing.Size(696, 322);
-            this.BTCGraphic.TabIndex = 0;
-            this.BTCGraphic.Text = "cartesianChart1";
-            // 
-            // btnlive
-            // 
-            this.btnlive.BackColor = System.Drawing.Color.Brown;
-            this.btnlive.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnlive.Font = new System.Drawing.Font("Montserrat Light", 10F);
-            this.btnlive.ForeColor = System.Drawing.Color.White;
-            this.btnlive.Location = new System.Drawing.Point(48, 10);
-            this.btnlive.Name = "btnlive";
-            this.btnlive.Size = new System.Drawing.Size(41, 28);
-            this.btnlive.TabIndex = 0;
-            this.btnlive.Text = "live";
-            this.btnlive.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnlive.UseVisualStyleBackColor = false;
-            this.btnlive.Click += new System.EventHandler(this.btnlive_Click);
-            // 
-            // btn15min
-            // 
-            this.btn15min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
-            this.btn15min.FlatAppearance.BorderSize = 0;
-            this.btn15min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn15min.Font = new System.Drawing.Font("Montserrat Light", 12F);
-            this.btn15min.ForeColor = System.Drawing.Color.White;
-            this.btn15min.Location = new System.Drawing.Point(99, 7);
-            this.btn15min.Name = "btn15min";
-            this.btn15min.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn15min.Size = new System.Drawing.Size(90, 35);
-            this.btn15min.TabIndex = 1;
-            this.btn15min.Text = "15 мин";
-            this.btn15min.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn15min.UseVisualStyleBackColor = false;
-            this.btn15min.Click += new System.EventHandler(this.btn15min_Click);
+            this.btn1day.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
+            this.btn1day.FlatAppearance.BorderSize = 0;
+            this.btn1day.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1day.Font = new System.Drawing.Font("Montserrat Light", 12F);
+            this.btn1day.ForeColor = System.Drawing.Color.White;
+            this.btn1day.Location = new System.Drawing.Point(291, 7);
+            this.btn1day.Name = "btn1day";
+            this.btn1day.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn1day.Size = new System.Drawing.Size(90, 35);
+            this.btn1day.TabIndex = 3;
+            this.btn1day.Text = "1 день";
+            this.btn1day.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn1day.UseVisualStyleBackColor = false;
+            this.btn1day.Click += new System.EventHandler(this.btn1day_Click);
             // 
             // btn1hour
             // 
@@ -120,22 +87,55 @@ namespace DecideDesktop
             this.btn1hour.UseVisualStyleBackColor = false;
             this.btn1hour.Click += new System.EventHandler(this.btn1hour_Click);
             // 
-            // btn1day
+            // btn15min
             // 
-            this.btn1day.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
-            this.btn1day.FlatAppearance.BorderSize = 0;
-            this.btn1day.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn1day.Font = new System.Drawing.Font("Montserrat Light", 12F);
-            this.btn1day.ForeColor = System.Drawing.Color.White;
-            this.btn1day.Location = new System.Drawing.Point(291, 7);
-            this.btn1day.Name = "btn1day";
-            this.btn1day.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btn1day.Size = new System.Drawing.Size(90, 35);
-            this.btn1day.TabIndex = 3;
-            this.btn1day.Text = "1 день";
-            this.btn1day.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn1day.UseVisualStyleBackColor = false;
-            this.btn1day.Click += new System.EventHandler(this.btn1day_Click);
+            this.btn15min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
+            this.btn15min.FlatAppearance.BorderSize = 0;
+            this.btn15min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn15min.Font = new System.Drawing.Font("Montserrat Light", 12F);
+            this.btn15min.ForeColor = System.Drawing.Color.White;
+            this.btn15min.Location = new System.Drawing.Point(99, 7);
+            this.btn15min.Name = "btn15min";
+            this.btn15min.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn15min.Size = new System.Drawing.Size(90, 35);
+            this.btn15min.TabIndex = 1;
+            this.btn15min.Text = "15 мин";
+            this.btn15min.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn15min.UseVisualStyleBackColor = false;
+            this.btn15min.Click += new System.EventHandler(this.btn15min_Click);
+            // 
+            // btnlive
+            // 
+            this.btnlive.BackColor = System.Drawing.Color.Brown;
+            this.btnlive.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnlive.Font = new System.Drawing.Font("Montserrat Light", 10F);
+            this.btnlive.ForeColor = System.Drawing.Color.White;
+            this.btnlive.Location = new System.Drawing.Point(48, 10);
+            this.btnlive.Name = "btnlive";
+            this.btnlive.Size = new System.Drawing.Size(41, 28);
+            this.btnlive.TabIndex = 0;
+            this.btnlive.Text = "live";
+            this.btnlive.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnlive.UseVisualStyleBackColor = false;
+            this.btnlive.Click += new System.EventHandler(this.btnlive_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.Graphic);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 53);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(696, 322);
+            this.panel2.TabIndex = 1;
+            // 
+            // Graphic
+            // 
+            this.Graphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Graphic.Location = new System.Drawing.Point(0, 0);
+            this.Graphic.Name = "Graphic";
+            this.Graphic.Size = new System.Drawing.Size(696, 322);
+            this.Graphic.TabIndex = 0;
+            this.Graphic.Text = "cartesianChart1";
             // 
             // FormMain
             // 
@@ -159,7 +159,7 @@ namespace DecideDesktop
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private LiveCharts.WinForms.CartesianChart BTCGraphic;
+        private LiveCharts.WinForms.CartesianChart Graphic;
         private System.Windows.Forms.Button btnlive;
         private System.Windows.Forms.Button btn1day;
         private System.Windows.Forms.Button btn1hour;

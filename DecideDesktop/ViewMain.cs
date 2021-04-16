@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -97,6 +98,7 @@ namespace DecideDesktop
         private void button5_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
+            
             //
             //
            
@@ -105,6 +107,7 @@ namespace DecideDesktop
         private void button6_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
+            FormMain.DrawGraphic(ETHGraphic);
             //
             //
             
@@ -113,9 +116,10 @@ namespace DecideDesktop
         private void button7_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
+            FormMain.DrawGraphic(LTCGraphic);
             //
             //
-            
+
         }
 
         private void picExit_Click(object sender, EventArgs e)
@@ -233,6 +237,7 @@ namespace DecideDesktop
         private void ViewMain_Load(object sender, EventArgs e)
         {
             timer1.Start();
+
             Coints = new List<Label>()
             {
                 labelConstBTC,labelConstETH,labelConstLTC,labelConstXRP
@@ -285,9 +290,10 @@ namespace DecideDesktop
         private void btnXRP_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
+            FormMain.DrawGraphic(XRPGraphic);
             //
             //
-            
+
         }
 
         private void btnXRP_MouseMove(object sender, MouseEventArgs e)
@@ -303,24 +309,39 @@ namespace DecideDesktop
        
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for(int i = 0;i < Coints.Count;i++)
+            Thread receiveThread = new Thread(new ThreadStart(UpdatePanel));
+            receiveThread.Start(); //старт потока
+            
+        }
+        //richTextBoxChat.Invoke(new Action(() => richTextBoxChat.Text += "Подключение прервано!" + "\n"));
+        private void UpdatePanel()
+        {
+            for (int i = 0; i < Coints.Count; i++)
+
             {
                 String symbol = Coints[i].Text;
-                Coin coin = UserController.GetCoin(symbol);
-                if (float.Parse(Prices[i].Text) > coin.Price)
+                Coin coin = UserController.GetCoin(symbol + "USDT");
+                string price = Prices[i].Text.Replace('.', ',');
+                price = price.Replace('↓', ' ');
+                price = price.Replace('↑', ' ');
+                if (float.Parse(price) > coin.Price)
                 {
-                    Prices[i].ForeColor = Color.IndianRed;//↓ ↑
-                    Prices[i].Text = "↓ " + coin.Price;
-                }
-                if(float.Parse(Prices[i].Text) < coin.Price)
-                {
-                    Prices[i].ForeColor = Color.LightGreen;//↓ ↑
-                    Prices[i].Text = "↑ " + coin.Price;
-                }
+                    //↓ ↑
                     
+                    Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.IndianRed));
+                    Prices[i].Invoke(new Action(() => Prices[i].Text = "↓ " + coin.Price));
+                }
+                if (float.Parse(price) < coin.Price)
+                {
+                    //↓ ↑
+                    
+                    Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.LightGreen));
+                    Prices[i].Invoke(new Action(() => Prices[i].Text = "↑ " + coin.Price));
+                }
+
 
             }
-            
+
         }
     }
 }
