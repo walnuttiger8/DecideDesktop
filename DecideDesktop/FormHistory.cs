@@ -15,6 +15,7 @@ namespace DecideDesktop
     {
         internal static List<Panel> HistoryPanel = new List<Panel>();
         internal static List<Trade> Trades = new List<Trade>();
+        internal static List<Wallet> Wallets = new List<Wallet>();
         public FormHistory()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace DecideDesktop
                 {
                     foreach (Trade trade in BTCTrades)
                     {
-                        var panel = createHistoryPanel(trade);
+                        createHistoryPanel(trade);
                     }
                 }
                 else
@@ -51,7 +52,7 @@ namespace DecideDesktop
                 {
                     foreach (Trade trade in ETHTrades)
                     {
-                        var panel = createHistoryPanel(trade);
+                        createHistoryPanel(trade);
                     }
                 }
                 else
@@ -71,7 +72,7 @@ namespace DecideDesktop
                 {
                     foreach (Trade trade in LTCTrades)
                     {
-                        var panel = createHistoryPanel(trade);
+                        createHistoryPanel(trade);
                     }
                 }
                 else
@@ -90,7 +91,7 @@ namespace DecideDesktop
                 {
                     foreach (Trade trade in XRPTrades)
                     {
-                        var panel = createHistoryPanel(trade);
+                        createHistoryPanel(trade);
                     }
                 }
                 else
@@ -108,7 +109,7 @@ namespace DecideDesktop
                 {
                     foreach (Trade trade in Trades)
                     {
-                        var panel = createHistoryPanel(trade);
+                        createHistoryPanel(trade);
                     }
                 }
                 else
@@ -156,12 +157,12 @@ namespace DecideDesktop
                 Left = 380,
                 Top = 10
             };
-            if(trade.Transaction=="sell")
+            if(trade.Transaction=="buy")
             {
                 Balance.Text = "-" + (trade.Price * trade.Amount) + "$";
                 Balance.ForeColor = Color.IndianRed;
             }
-            if (trade.Transaction == "buy")
+            if (trade.Transaction == "sell")
             {
                 Balance.Text = "+" + (trade.Price * trade.Amount) + "$";
                 Balance.ForeColor = Color.LightGreen;
@@ -171,9 +172,9 @@ namespace DecideDesktop
 
             Label labelTime = new Label()
             {
-                Size = new Size(300,28),
+                Size = new Size(350,28),
                 Location = new System.Drawing.Point(60, 10),
-                Text = trade.Time,
+                Text = trade.Time.ToString(),
                 Font = new System.Drawing.Font("Monsterrat", 14.0f),
                 Top = 10,
                 Left = 550,
@@ -182,7 +183,6 @@ namespace DecideDesktop
             };
             
             panel.Controls.Add(labelTime);
-
 
             Panel panelLine = new Panel()
             {
@@ -198,34 +198,25 @@ namespace DecideDesktop
 
         private void FormHistory_Load(object sender, EventArgs e)
         {
-            comboBoxChoiseCurrency.SelectedIndex = 0;
+            ClearPanelList();
 
-            Trades = UserController.GetTrades(ViewMain.userId);
-            List<Wallet> wallets = UserController.GetWallets(ViewMain.userId);
-
-            if (wallets.Count != 0)
+            if (Wallets.Count != 0)
             {
-                foreach (Wallet wallet in wallets)
+                foreach (Wallet wallet in Wallets)
                 {
                     comboBoxChoiseCurrency.Items.Add(wallet.Coin.Symbol);
                 }
             }
 
-            if (Trades.Count != 0)
+            for (int i = 0; i < Trades.Count; i++)
             {
-                foreach (Trade trade in Trades)
-                {
-                    var panel = createHistoryPanel(trade);
-                }
-            }
-            else
-            {
-                labelTransactionHavent.Visible = true;
+                createHistoryPanel(Trades[i]);
             }
         }
 
         internal List<Trade> SortTrade(string Symbol)
         {
+            Trades = UserController.GetTrades(ViewMain.userId);
             List<Trade> SortedTrades = new List<Trade>();
 
             foreach (Trade trade in Trades)
@@ -241,7 +232,8 @@ namespace DecideDesktop
 
         internal void ClearPanelList()
         {
-            foreach(Panel panel in HistoryPanel)
+            Trades = UserController.GetTrades(ViewMain.userId);
+            foreach (Panel panel in HistoryPanel)
             {
                 panel.Dispose();
             }

@@ -154,6 +154,8 @@ namespace DecideDesktop
                     ViewMain.BTCGraphic = UserController.GetChartData("BTCUSDT", "1h", 100);
                     ViewMain.XRPGraphic = UserController.GetChartData("XRPUSDT", "1h", 100);
                     ViewMain.LTCGraphic = UserController.GetChartData("LTCUSDT", "1h", 100);
+                    FormHistory.Trades = UserController.GetTrades(ViewMain.userId);
+                    FormHistory.Wallets = UserController.GetWallets(ViewMain.userId);
                     ViewMain viewMain = new ViewMain();
 
                     viewMain.Show();

@@ -132,14 +132,18 @@ namespace DecideDesktop
             this.panelFillHistory.Location = new System.Drawing.Point(0, 86);
             this.panelFillHistory.Name = "panelFillHistory";
             this.panelFillHistory.Size = new System.Drawing.Size(696, 289);
-            this.panelFillHistory.TabIndex = 6;
+
+            this.panelFillHistory.TabIndex = 2;
+
             // 
             // labelTransactionHavent
             // 
             this.labelTransactionHavent.AutoSize = true;
+
             this.labelTransactionHavent.Font = new System.Drawing.Font("Montserrat Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelTransactionHavent.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.labelTransactionHavent.Location = new System.Drawing.Point(278, 25);
+
             this.labelTransactionHavent.Name = "labelTransactionHavent";
             this.labelTransactionHavent.Size = new System.Drawing.Size(17, 26);
             this.labelTransactionHavent.TabIndex = 0;

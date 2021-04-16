@@ -126,8 +126,19 @@ namespace DecideDesktop.Classes
             {
                 {"symbol", Symbol}
             };
-            return new Coin("BTCUSDT", 64000f);
-            
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_coin", symbolData);
+
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
+            {
+                return Coin.FromJson(JsonResult["results"].ToString());
+            }
+            else
+            {
+                PrintError(JsonResult["message"].ToString());
+                return null;
+            }
+
         }
 
         internal static Wallet AddCoin(string Symbol, int userId, float percent = 100)
@@ -223,7 +234,7 @@ namespace DecideDesktop.Classes
             }
         }
 
-        internal static Trade Sell(string Symbol, int userId)
+        internal static void Sell(string Symbol, int userId)
         {
             Dictionary<string, object> CoinDict = new Dictionary<string, object>()
             {
@@ -233,14 +244,9 @@ namespace DecideDesktop.Classes
 
             var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/sell", CoinDict);
 
-            if (Convert.ToInt32(JsonResult["success"]) == 1)
-            {
-                return Trade.FromJson((Dictionary<string, object>)JsonResult["results"]);
-            }
-            else
+            if (Convert.ToInt32(JsonResult["success"]) == 0)
             {
                 PrintError(JsonResult["message"].ToString());
-                return null;
             }
         }
 
