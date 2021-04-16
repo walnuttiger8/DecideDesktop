@@ -61,6 +61,8 @@ namespace DecideDesktop
             // 
             // panelSidePart
             // 
+            this.panelSidePart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelSidePart.AutoScroll = true;
             this.panelSidePart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(34)))));
             this.panelSidePart.Controls.Add(this.panelCurrencySubmenu);

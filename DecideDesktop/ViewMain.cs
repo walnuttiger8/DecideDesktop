@@ -58,7 +58,7 @@ namespace DecideDesktop
             openChildForm(new FormMain());
             //
             //
-            hideSubMenu();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace DecideDesktop
             openChildForm(new FormProfile());
             //
             //
-            hideSubMenu();
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace DecideDesktop
             openChildForm(new FormHistory());
             //
             //
-            hideSubMenu();
+            
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace DecideDesktop
             openChildForm(new FormSettings());
             //
             //
-            hideSubMenu();
+            
         }
         
         private void btnCurrency_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace DecideDesktop
             openChildForm(new FormMain());
             //
             //
-            hideSubMenu();
+           
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace DecideDesktop
             openChildForm(new FormMain());
             //
             //
-            hideSubMenu();
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace DecideDesktop
             openChildForm(new FormMain());
             //
             //
-            hideSubMenu();
+            
         }
 
         private void picExit_Click(object sender, EventArgs e)
@@ -270,7 +270,7 @@ namespace DecideDesktop
             openChildForm(new FormMain());
             //
             //
-            hideSubMenu();
+            
         }
 
         private void btnXRP_MouseMove(object sender, MouseEventArgs e)
