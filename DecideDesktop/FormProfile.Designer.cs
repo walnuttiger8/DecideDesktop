@@ -34,6 +34,7 @@ namespace DecideDesktop
             this.comboBoxChoiseCurrency = new System.Windows.Forms.ComboBox();
             this.labelAddCurrency = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelQw = new System.Windows.Forms.Label();
             this.labelUserBalance = new System.Windows.Forms.Label();
             this.panelTemp = new System.Windows.Forms.Panel();
             this.labelPercentQuestion = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@ namespace DecideDesktop
             this.label1 = new System.Windows.Forms.Label();
             this.panelFill = new System.Windows.Forms.Panel();
             this.labelWalletHavent = new System.Windows.Forms.Label();
-            this.labelQw = new System.Windows.Forms.Label();
             helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel1.SuspendLayout();
             this.panelTemp.SuspendLayout();
@@ -108,6 +108,16 @@ namespace DecideDesktop
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(712, 53);
             this.panel1.TabIndex = 2;
+            // 
+            // labelQw
+            // 
+            this.labelQw.AutoSize = true;
+            this.labelQw.Font = new System.Drawing.Font("Montserrat Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelQw.ForeColor = System.Drawing.Color.White;
+            this.labelQw.Location = new System.Drawing.Point(646, 9);
+            this.labelQw.Name = "labelQw";
+            this.labelQw.Size = new System.Drawing.Size(0, 15);
+            this.labelQw.TabIndex = 5;
             // 
             // labelUserBalance
             // 
@@ -199,16 +209,6 @@ namespace DecideDesktop
             this.labelWalletHavent.Size = new System.Drawing.Size(192, 21);
             this.labelWalletHavent.TabIndex = 0;
             this.labelWalletHavent.Text = "У вас еще нет кошельков";
-            // 
-            // labelQw
-            // 
-            this.labelQw.AutoSize = true;
-            this.labelQw.Font = new System.Drawing.Font("Montserrat Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQw.ForeColor = System.Drawing.Color.White;
-            this.labelQw.Location = new System.Drawing.Point(646, 9);
-            this.labelQw.Name = "labelQw";
-            this.labelQw.Size = new System.Drawing.Size(0, 15);
-            this.labelQw.TabIndex = 5;
             // 
             // FormProfile
             // 

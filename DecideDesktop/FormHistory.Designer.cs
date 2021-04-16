@@ -130,18 +130,17 @@ namespace DecideDesktop
             this.panelFillHistory.AutoScroll = true;
             this.panelFillHistory.Controls.Add(this.labelTransactionHavent);
             this.panelFillHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFillHistory.Location = new System.Drawing.Point(0, 0);
+            this.panelFillHistory.Location = new System.Drawing.Point(0, 86);
             this.panelFillHistory.Name = "panelFillHistory";
-            this.panelFillHistory.Size = new System.Drawing.Size(696, 375);
+            this.panelFillHistory.Size = new System.Drawing.Size(696, 289);
             this.panelFillHistory.TabIndex = 2;
-            this.panelFillHistory.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFillHistory_Paint);
             // 
             // labelTransactionHavent
             // 
             this.labelTransactionHavent.AutoSize = true;
             this.labelTransactionHavent.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTransactionHavent.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelTransactionHavent.Location = new System.Drawing.Point(219, 24);
+            this.labelTransactionHavent.Location = new System.Drawing.Point(247, 24);
             this.labelTransactionHavent.Name = "labelTransactionHavent";
             this.labelTransactionHavent.Size = new System.Drawing.Size(0, 21);
             this.labelTransactionHavent.TabIndex = 1;
@@ -152,9 +151,9 @@ namespace DecideDesktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(696, 375);
+            this.Controls.Add(this.panelFillHistory);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelFillHistory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormHistory";
             this.Text = "FormHistory";

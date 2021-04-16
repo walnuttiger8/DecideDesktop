@@ -22,36 +22,34 @@ namespace DecideDesktop
    
         private void label1_Click(object sender, EventArgs e)
         {
+            if (comboBoxChoiseCurrency.Items.Count == 0)
+            {
 
-            if (comboBoxChoiseCurrency.SelectedItem.Equals("BTCUSDT"))
+            }
+            else if (comboBoxChoiseCurrency.SelectedItem.Equals("BTCUSDT"))
             {
                 var BTCPanel = createWallet(UserController.AddCoin("BTCUSDT", ViewMain.userId));
                 BTCPanel.Name = "BTCPanel";
-                WalletsPanel.Add(BTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("BTCUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("ETHUSDT"))
             {
                 var ETHPanel = createWallet(UserController.AddCoin("ETHUSDT", ViewMain.userId));
                 ETHPanel.Name = "ETHPanel";
-                WalletsPanel.Add(ETHPanel);
                 comboBoxChoiseCurrency.Items.Remove("ETHUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("LTCUSDT"))
             {
                 var LTCPanel = createWallet(UserController.AddCoin("LTCUSDT", ViewMain.userId));
                 LTCPanel.Name = "LTCPanel";
-                WalletsPanel.Add(LTCPanel);
                 comboBoxChoiseCurrency.Items.Remove("LTCUSDT");
             }
             else if (comboBoxChoiseCurrency.SelectedItem.Equals("XRPUSDT"))
             {
                 var XRPPanel = createWallet(UserController.AddCoin("XRPUSDT", ViewMain.userId));
                 XRPPanel.Name = "LTCPanel";
-                WalletsPanel.Add(XRPPanel);
                 comboBoxChoiseCurrency.Items.Remove("XRPUSDT");
             }            
-
         }
 
         private void labelAddCurrency_MouseMove(object sender, MouseEventArgs e)
@@ -125,7 +123,7 @@ namespace DecideDesktop
                 ForeColor = Color.Red,
                 FlatStyle = FlatStyle.Flat       
             };
-            labelSell.Click+= new EventHandler(wallet.Sell);
+            labelSell.Click += new EventHandler(wallet.Sell);
             panel.Controls.Add(labelSell);
 
             Panel panelLine = new Panel()
@@ -136,11 +134,27 @@ namespace DecideDesktop
             };
             panelLine.BackColor = Color.White;
             panel.Controls.Add(panelLine);
+            WalletsPanel.Add(panel);
             return panel;
         }
 
         private void FormProfile_Load(object sender, EventArgs e)
         {
+            Wallet.FormProfile = this;
+            UpdateWallets();
+        }
+       
+        public void UpdateWallets()
+        {
+            if (comboBoxChoiseCurrency.Items.Count == 0)
+            {
+                comboBoxChoiseCurrency.Enabled = false;
+            }
+            foreach (Panel panel in WalletsPanel)
+            {
+                panel.Dispose();
+            }
+            WalletsPanel.Clear();
             List<Wallet> wallets = UserController.GetWallets(ViewMain.userId);
             if (wallets.Count != 0)
             {
@@ -149,10 +163,10 @@ namespace DecideDesktop
                     createWallet(wallet);
                     comboBoxChoiseCurrency.Items.Remove(wallet.Coin.Symbol);
                 }
+                ViewMain.thisUser = UserController.GetUser(ViewMain.userId);
+                labelUserBalance.Text = $"Баланс: {ViewMain.thisUser.Balance}$";
             }
-            labelUserBalance.Text += $" {ViewMain.thisUser.Balance}$";
         }
-       
 
         private void labelPercentQuestion_MouseMove(object sender, MouseEventArgs e)
         {
