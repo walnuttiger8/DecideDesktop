@@ -29,7 +29,17 @@ namespace DecideDesktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.BTCGraphic = new LiveCharts.WinForms.CartesianChart();
             this.SuspendLayout();
+            // 
+            // BTCGraphic
+            // 
+            this.BTCGraphic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BTCGraphic.ForeColor = System.Drawing.Color.White;
+            this.BTCGraphic.Location = new System.Drawing.Point(0, 0);
+            this.BTCGraphic.Name = "BTCGraphic";
+            this.BTCGraphic.Size = new System.Drawing.Size(696, 375);
+            this.BTCGraphic.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -37,6 +47,7 @@ namespace DecideDesktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(696, 375);
+            this.Controls.Add(this.BTCGraphic);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.Text = "FormMain";
@@ -46,5 +57,7 @@ namespace DecideDesktop
         }
 
         #endregion
+
+        private LiveCharts.WinForms.CartesianChart BTCGraphic;
     }
 }

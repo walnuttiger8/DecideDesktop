@@ -88,17 +88,28 @@ namespace DecideDesktop
                 Text =wallet.Amount.ToString(),
                 Font = new System.Drawing.Font("Monsterrat", 14.0f),
             };
-            BTCamount.Left = 230;
+            BTCamount.Left = 180;
             BTCamount.Top = 10;
             BTCamount.ForeColor = Color.White;
             panel.Controls.Add(BTCamount);
+
+            Label price = new Label()
+            {
+                Location = new System.Drawing.Point(60, 10),
+                Text = (wallet.Amount * wallet.Coin.Price) + "$",
+                Font = new System.Drawing.Font("Monsterrat", 14.0f),
+            };
+            price.Left = 370;
+            price.Top = 10;
+            price.ForeColor = Color.LightGreen;
+            panel.Controls.Add(price);
 
             Label BTCpercent = new Label()
             {
                 Location = new System.Drawing.Point(60, 10),
                 Text = wallet.Percent.ToString() + " %",
                 Font = new System.Drawing.Font("Monsterrat", 14.0f),
-                Left = 430,
+                Left = 560,
                 Top = 10,
                 ForeColor = Color.White,
             };
@@ -106,11 +117,11 @@ namespace DecideDesktop
 
             Label labelSell = new Label()
             {
-                Size = new Size(100, 30),
+                Size = new Size(20, 28),
                 Text = "X",
                 Font = new System.Drawing.Font("Arial", 18.0f),
                 Top = 10,
-                Left = 550,
+                Left = 720,
                 ForeColor = Color.Red,
                 FlatStyle = FlatStyle.Flat       
             };
@@ -119,7 +130,7 @@ namespace DecideDesktop
 
             Panel panelLine = new Panel()
             {
-                Size = new Size(510, 1),
+                Size = new Size(700, 1),
                 Top = 39,
                 Left = 20
             };
@@ -140,6 +151,22 @@ namespace DecideDesktop
                 }
             }
             labelUserBalance.Text += $" {ViewMain.thisUser.Balance}$";
+        }
+       
+
+        private void labelPercentQuestion_MouseMove(object sender, MouseEventArgs e)
+        {
+            labelQw.Text = "Процент от \nвашего баланса, использованный \nдля покупки валюты";
+            labelPercentQuestion.Text = "";
+            labelQw.ForeColor = Color.Yellow;
+
+        }
+
+        private void labelPercentQuestion_MouseLeave(object sender, EventArgs e)
+        {
+            labelQw.Text = "";
+            labelPercentQuestion.Text = "?";
+            labelPercentQuestion.ForeColor = Color.White;
         }
     }
 }
