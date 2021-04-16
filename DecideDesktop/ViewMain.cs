@@ -307,8 +307,18 @@ namespace DecideDesktop
             {
                 String symbol = Coints[i].Text;
                 Coin coin = UserController.GetCoin(symbol);
-                if(float.Parse(Prices[i].Text)>coin.Price)
-                    Prices[i].Text = coin.Price+"";
+                if (float.Parse(Prices[i].Text) > coin.Price)
+                {
+                    Prices[i].ForeColor = Color.IndianRed;//↓ ↑
+                    Prices[i].Text = "↓ " + coin.Price;
+                }
+                if(float.Parse(Prices[i].Text) < coin.Price)
+                {
+                    Prices[i].ForeColor = Color.LightGreen;//↓ ↑
+                    Prices[i].Text = "↑ " + coin.Price;
+                }
+                    
+
             }
             
         }
