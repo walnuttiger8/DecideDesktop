@@ -227,8 +227,21 @@ namespace DecideDesktop
             picExit.BackgroundImage = Properties.Resources.exit_grey;
         }
 
+        List<Label> Coints;
+        List<Label> Prices;
+
         private void ViewMain_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+            List<Label> Coints = new List<Label>()
+            {
+                labelConstBTC,labelConstETH,labelConstLTC,labelConstXRP
+            };
+            List<Label> Prices = new List<Label>()
+            {
+                labelConstBTCPrice,labelConstETHPrice,labelConstLTCPrice,labelConstXRPPrice
+            };
+
             if (userId != 0)
             {
                 labelUsername.Text = thisUser.Name;
@@ -285,6 +298,19 @@ namespace DecideDesktop
         private void btnXRP_MouseLeave(object sender, EventArgs e)
         {
             btnXRP.ForeColor = Color.White;
+        }
+
+       
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            for(int i = 0;i<Coints.Count;i++)
+            {
+                String symbol = Coints[i].Text;
+                Coin coin = UserController.GetCoin(symbol);
+                if(float.Parse(Prices[i].Text)>coin.Price)
+                    Prices[i].Text = coin.Price+"";
+            }
+            
         }
     }
 }
