@@ -28,40 +28,40 @@ namespace DecideDesktop
         }
         public static  void DrawGraphic(List<float> GraphicData)
         {
-            SeriesCollection series = new SeriesCollection();
-            ChartValues<int> ContValues = new ChartValues<int>();
-            DateTime dateTime = DateTime.Now;
+            //SeriesCollection series = new SeriesCollection();
+            //ChartValues<int> ContValues = new ChartValues<int>();
+            //DateTime dateTime = DateTime.Now;
 
-            List<string> dates = new List<string>();
-            for (int i = GraphicData.Count; i > 0; i--)
-            {
-                dates.Add(i + "");
-            }
-            int b = GraphicData.Count;
-            for (int i = 0; i < GraphicData.Count; i++)
-            {
-                ContValues.Add((int)GraphicData[i]);
-            }
-            Graphic.AxisX.Clear();
+            //List<string> dates = new List<string>();
+            //for (int i = GraphicData.Count; i > 0; i--)
+            //{
+            //    dates.Add(i + "");
+            //}
+            //int b = GraphicData.Count;
+            //for (int i = 0; i < GraphicData.Count; i++)
+            //{
+            //    ContValues.Add((int)GraphicData[i]);
+            //}
+            //Graphic.AxisX.Clear();
 
-            Graphic.AxisX.Add(new Axis()
-            {
-                Title = "Time",
-                Labels = dates,
+            //Graphic.AxisX.Add(new Axis()
+            //{
+            //    Title = "Time",
+            //    Labels = dates,
 
-            });
+            //});
 
-            LineSeries line = new LineSeries();
+            //LineSeries line = new LineSeries();
 
-            line.Title = "";
-            line.Values = ContValues;
-            var converter = new System.Windows.Media.BrushConverter();
-            var Brush = converter.ConvertFromString("#FFF2A7");
-            line.Foreground = Brush as System.Windows.Media.Brush;
+            //line.Title = "";
+            //line.Values = ContValues;
+            //var converter = new System.Windows.Media.BrushConverter();
+            //var Brush = converter.ConvertFromString("#FFF2A7");
+            //line.Foreground = Brush as System.Windows.Media.Brush;
 
-            series.Add(line);
+            //series.Add(line);
 
-            Graphic.Series = series;
+            //Graphic.Series = series;
         }
        
 

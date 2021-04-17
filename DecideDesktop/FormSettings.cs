@@ -16,5 +16,20 @@ namespace DecideDesktop
         {
             InitializeComponent();
         }
+
+        private void labelTopUp_Click(object sender, EventArgs e)
+        {
+            labelTopUp.Text = "";
+        }
+
+        private void labelTopUp_MouseLeave(object sender, EventArgs e)
+        {
+            labelTopUp.ForeColor = Color.White;
+        }
+
+        private void labelTopUp_MouseMove(object sender, MouseEventArgs e)
+        {
+            labelTopUp.ForeColor = Color.FromArgb(215, 179, 6);
+        }
     }
 }
