@@ -249,6 +249,7 @@ namespace DecideDesktop
             showSubMenu(panelCurrencySubmenu);
             FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic1h);
             FormProfile.ViewMain = this;
+            ViewMain.thisUser = UserController.GetUser(ViewMain.userId);
         }
         private Form activeForm = null;
         private void openChildForm(Form childForm)
