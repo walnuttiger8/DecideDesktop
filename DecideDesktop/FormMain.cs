@@ -1,5 +1,5 @@
-﻿using LiveCharts;
-
+﻿using DecideDesktop.Classes;
+using LiveCharts;
 using LiveCharts.WinForms;
 using LiveCharts.Wpf;
 using System;
@@ -16,7 +16,7 @@ namespace DecideDesktop
 {
     public partial class FormMain : Form
     {
-        public static List<float> GraphicData = new List<float>();
+        internal static GraphicSystem FormMainGraphic;
         public FormMain()
         {
             InitializeComponent();
@@ -24,46 +24,9 @@ namespace DecideDesktop
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            DrawGraphic(ViewMain.BTCGraphic);
+            ViewMain.FormMain = this;
+            FormMainGraphic = new GraphicSystem(Graphic);
         }
-        public static  void DrawGraphic(List<float> GraphicData)
-        {
-            //SeriesCollection series = new SeriesCollection();
-            //ChartValues<int> ContValues = new ChartValues<int>();
-            //DateTime dateTime = DateTime.Now;
-
-            //List<string> dates = new List<string>();
-            //for (int i = GraphicData.Count; i > 0; i--)
-            //{
-            //    dates.Add(i + "");
-            //}
-            //int b = GraphicData.Count;
-            //for (int i = 0; i < GraphicData.Count; i++)
-            //{
-            //    ContValues.Add((int)GraphicData[i]);
-            //}
-            //Graphic.AxisX.Clear();
-
-            //Graphic.AxisX.Add(new Axis()
-            //{
-            //    Title = "Time",
-            //    Labels = dates,
-
-            //});
-
-            //LineSeries line = new LineSeries();
-
-            //line.Title = "";
-            //line.Values = ContValues;
-            //var converter = new System.Windows.Media.BrushConverter();
-            //var Brush = converter.ConvertFromString("#FFF2A7");
-            //line.Foreground = Brush as System.Windows.Media.Brush;
-
-            //series.Add(line);
-
-            //Graphic.Series = series;
-        }
-       
 
         private void btnlive_Click(object sender, EventArgs e)
         {

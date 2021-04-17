@@ -16,6 +16,7 @@ namespace DecideDesktop
     {
         public static ViewSignIn SignIn = new ViewSignIn();
         public static ViewSignUp SignUp = new ViewSignUp();
+        public static FormMain FormMain;
         internal static List<float> ETHGraphic = new List<float>();
         internal static List<float> BTCGraphic = new List<float>();
         internal static List<float> LTCGraphic = new List<float>();
@@ -45,7 +46,6 @@ namespace DecideDesktop
             {
                 //hideSubMenu();
                 SubMenu.Visible = true;
-
             }
             else
             {
@@ -61,33 +61,22 @@ namespace DecideDesktop
         private void button2_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            //
-            //
-            
+            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             openChildForm(new FormProfile());
-            //
-            //
-            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             openChildForm(new FormHistory());
-            //
-            //
-            
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            openChildForm(new FormSettings());
-            //
-            //
-            
+            openChildForm(new FormSettings());  
         }
         
         private void btnCurrency_Click(object sender, EventArgs e)
@@ -98,42 +87,31 @@ namespace DecideDesktop
         private void button5_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            
-            //
-            //
-           
+            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.DrawGraphic(ETHGraphic);
-            //
-            //
-            
+            FormMain.FormMainGraphic.GraphicsDraw(ETHGraphic);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.DrawGraphic(LTCGraphic);
-            //
-            //
-
+            FormMain.FormMainGraphic.GraphicsDraw(LTCGraphic);
         }
 
         private void picExit_Click(object sender, EventArgs e)
         {
             SignUp.Visible = true;
             SignIn.Visible = true;
-            this.Dispose();
-            
+            this.Dispose();          
         }
 
         private void btmMenu_MouseMove(object sender, MouseEventArgs e)
         {
             btmMenu.ForeColor = Color.FromArgb(215, 179, 6);
-
         }
 
         private void button2_MouseMove(object sender, MouseEventArgs e)
@@ -255,6 +233,7 @@ namespace DecideDesktop
             openChildForm(new FormMain());
             showSubMenu(panelMenuSubmenu);
             showSubMenu(panelCurrencySubmenu);
+            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic);
             FormProfile.ViewMain = this;
         }
         private Form activeForm = null;
@@ -290,10 +269,7 @@ namespace DecideDesktop
         private void btnXRP_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.DrawGraphic(XRPGraphic);
-            //
-            //
-
+            FormMain.FormMainGraphic.GraphicsDraw(XRPGraphic);
         }
 
         private void btnXRP_MouseMove(object sender, MouseEventArgs e)
@@ -313,17 +289,19 @@ namespace DecideDesktop
             receiveThread.Start(); //старт потока
             
         }
-        //richTextBoxChat.Invoke(new Action(() => richTextBoxChat.Text += "Подключение прервано!" + "\n"));
         private void UpdatePanel()
         {
             for (int i = 0; i < Coints.Count; i++)
-
             {
                 String symbol = Coints[i].Text;
                 Coin coin = UserController.GetCoin(symbol + "USDT");
                 string price = Prices[i].Text.Replace('.', ',');
                 price = price.Replace('↓', ' ');
                 price = price.Replace('↑', ' ');
+                if (price == "")
+                {
+                    return;
+                }
                 if (float.Parse(price) > coin.Price)
                 {
                     //↓ ↑
@@ -338,10 +316,7 @@ namespace DecideDesktop
                     Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.LightGreen));
                     Prices[i].Invoke(new Action(() => Prices[i].Text = "↑ " + coin.Price));
                 }
-
-
             }
-
         }
     }
 }
