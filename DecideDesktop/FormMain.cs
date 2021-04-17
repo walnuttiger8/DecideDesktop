@@ -27,7 +27,7 @@ namespace DecideDesktop
             ViewMain.FormMain = this;
             FormMainGraphic = new GraphicSystem(Graphic);
         }
-            
+
         private void btnlive_Click(object sender, EventArgs e)
         {
 
