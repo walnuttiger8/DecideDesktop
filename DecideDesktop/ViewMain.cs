@@ -227,6 +227,9 @@ namespace DecideDesktop
         {
             ViewMain.thisUser = UserController.GetUser(ViewMain.userId);
             labelBalance.Text = $"Баланс: {ViewMain.thisUser.Balance}$";
+
+            var profit = UserController.GetUserProfit(ViewMain.userId);
+            labelProfite.Text = $"Доход: {profit}$";
             
             timer1.Start();
 

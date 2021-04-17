@@ -309,9 +309,10 @@ namespace DecideDesktop.Classes
 
             var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_profit", userIdDict);
 
-            if (Convert.ToInt32(JsonResult["access"]) == 1)
+            if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                return float.Parse(JsonResult["profit"].ToString());
+                var Podslovar = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+                return float.Parse(Podslovar["profit"].ToString());
             }
             else
             {

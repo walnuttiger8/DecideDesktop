@@ -33,7 +33,6 @@ namespace DecideDesktop
             this.btn1day = new System.Windows.Forms.Button();
             this.btn1hour = new System.Windows.Forms.Button();
             this.btn15min = new System.Windows.Forms.Button();
-            this.btnlive = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Graphic = new LiveCharts.WinForms.CartesianChart();
             this.panel1.SuspendLayout();
@@ -46,7 +45,6 @@ namespace DecideDesktop
             this.panel1.Controls.Add(this.btn1day);
             this.panel1.Controls.Add(this.btn1hour);
             this.panel1.Controls.Add(this.btn15min);
-            this.panel1.Controls.Add(this.btnlive);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -104,21 +102,6 @@ namespace DecideDesktop
             this.btn15min.UseVisualStyleBackColor = false;
             this.btn15min.Click += new System.EventHandler(this.btn15min_Click);
             // 
-            // btnlive
-            // 
-            this.btnlive.BackColor = System.Drawing.Color.Brown;
-            this.btnlive.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnlive.Font = new System.Drawing.Font("Montserrat Light", 10F);
-            this.btnlive.ForeColor = System.Drawing.Color.White;
-            this.btnlive.Location = new System.Drawing.Point(48, 10);
-            this.btnlive.Name = "btnlive";
-            this.btnlive.Size = new System.Drawing.Size(41, 28);
-            this.btnlive.TabIndex = 0;
-            this.btnlive.Text = "live";
-            this.btnlive.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnlive.UseVisualStyleBackColor = false;
-            this.btnlive.Click += new System.EventHandler(this.btnlive_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.Graphic);
@@ -159,7 +142,6 @@ namespace DecideDesktop
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnlive;
         private System.Windows.Forms.Button btn1day;
         private System.Windows.Forms.Button btn1hour;
         private System.Windows.Forms.Button btn15min;
