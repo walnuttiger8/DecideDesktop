@@ -5,6 +5,7 @@ using System.Web;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace DecideDesktop
 {
@@ -13,29 +14,37 @@ namespace DecideDesktop
         internal const string Address = "http://127.0.0.1:5000";
         internal static Dictionary<string, object> SendRequest(string Address, Dictionary<string, object> Dictionary)
         {
-            string Result = "";
-            dynamic JsonObject = JsonConvert.SerializeObject(Dictionary);
-
-            byte[] byteArray = Encoding.UTF8.GetBytes(JsonObject.ToString());
-
-            WebRequest Request = WebRequest.Create(Address);
-            Request.Method = "POST";
-            Request.ContentType = "application/json";
-            Request.ContentLength = byteArray.Length;
-
-            using (Stream dataStream = Request.GetRequestStream())
+            try
             {
-                dataStream.Write(byteArray, 0, byteArray.Length);
-            }
-            HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+                string Result = "";
+                dynamic JsonObject = JsonConvert.SerializeObject(Dictionary);
 
-            using (StreamReader streamReader = new StreamReader(Response.GetResponseStream()))
+                byte[] byteArray = Encoding.UTF8.GetBytes(JsonObject.ToString());
+
+                WebRequest Request = WebRequest.Create(Address);
+                Request.Method = "POST";
+                Request.ContentType = "application/json";
+                Request.ContentLength = byteArray.Length;
+
+                using (Stream dataStream = Request.GetRequestStream())
+                {
+                    dataStream.Write(byteArray, 0, byteArray.Length);
+                }
+                HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+
+                using (StreamReader streamReader = new StreamReader(Response.GetResponseStream()))
+                {
+                    Result = streamReader.ReadToEnd();
+                }
+
+                dynamic JsonDeserializedObject = JsonConvert.DeserializeObject<Dictionary<string, object>>(Result);
+                return JsonDeserializedObject;
+            }
+            catch
             {
-                Result = streamReader.ReadToEnd();
+                MessageBox.Show("Удаленный сервер не доступен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
-
-            dynamic JsonDeserializedObject = JsonConvert.DeserializeObject<Dictionary<string, object>>(Result);
-            return JsonDeserializedObject;
         }
     }
 }
