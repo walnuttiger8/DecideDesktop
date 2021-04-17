@@ -225,6 +225,9 @@ namespace DecideDesktop
 
         private void ViewMain_Load(object sender, EventArgs e)
         {
+            ViewMain.thisUser = UserController.GetUser(ViewMain.userId);
+            labelBalance.Text = $"Баланс: {ViewMain.thisUser.Balance}$";
+            
             timer1.Start();
 
             Coints = new List<Label>()
