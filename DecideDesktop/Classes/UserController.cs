@@ -300,6 +300,26 @@ namespace DecideDesktop.Classes
             }         
         }
 
+        internal static float GetUserProfit(int userId)
+        {
+            Dictionary<string, object> userIdDict = new Dictionary<string, object>()
+            {
+                {"user_id", userId }
+            };
+
+            var JsonResult = HTTPClient.SendRequest(HTTPClient.Address + "/get_profit", userIdDict);
+
+            if (Convert.ToInt32(JsonResult["access"]) == 1)
+            {
+                return float.Parse(JsonResult["profit"].ToString());
+            }
+            else
+            {
+                PrintError(JsonResult["message"].ToString());
+                return 0;
+            }
+        }
+
         internal static void PrintError(string ErrorMessage)
         {
             MessageBox.Show($"Сообщение: {ErrorMessage}", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
