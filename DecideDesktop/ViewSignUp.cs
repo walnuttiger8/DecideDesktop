@@ -165,7 +165,9 @@ namespace DecideDesktop
                     { "password", textBoxPasswordSignUp.Text},
                     { "email", textBoxEmailSignUp.Text }
                 };
-
+                textBoxEmailSignUp.Text = "";
+                textBoxPasswordSignUp.Text = "";
+                textBoxProfileSignUp.Text = "";
                 thisUserId = UserController.SignUp(SignUpValues);
                 if (thisUserId != 0)
                 {

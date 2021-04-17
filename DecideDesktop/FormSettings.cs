@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DecideDesktop.Classes;
 
 namespace DecideDesktop
 {
@@ -19,6 +20,7 @@ namespace DecideDesktop
 
         private void labelTopUp_Click(object sender, EventArgs e)
         {
+            UserController.IncreaseBalance(ViewMain.userId, float.Parse(textBoxTopUp.Text.Replace('.', ',')));
             textBoxTopUp.Text = "";
         }
 
@@ -34,7 +36,8 @@ namespace DecideDesktop
 
         private void FormSettings_Load(object sender, EventArgs e)
         {
-           
+            ViewMain.thisUser = UserController.GetUser(ViewMain.userId);
+            labelUserBalance.Text = $"Баланс: {ViewMain.thisUser.Balance}$";
         }
     }
 }
