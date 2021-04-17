@@ -31,5 +31,10 @@ namespace DecideDesktop
         {
             labelTopUp.ForeColor = Color.FromArgb(215, 179, 6);
         }
+
+        private void FormSettings_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
