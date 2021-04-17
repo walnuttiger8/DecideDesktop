@@ -150,10 +150,7 @@ namespace DecideDesktop
                 {
                     ViewMain.userId = userId;
                     ViewMain.thisUser = UserController.GetUser(userId);
-                    ViewMain.ETHGraphic = UserController.GetChartData("ETHUSDT", "1h", 100);
-                    ViewMain.BTCGraphic = UserController.GetChartData("BTCUSDT", "1h", 100);
-                    ViewMain.XRPGraphic = UserController.GetChartData("XRPUSDT", "1h", 100);
-                    ViewMain.LTCGraphic = UserController.GetChartData("LTCUSDT", "1h", 100);
+                    GetCoinPrices();
                     FormHistory.Trades = UserController.GetTrades(ViewMain.userId);
                     FormHistory.Wallets = UserController.GetWallets(ViewMain.userId);
                     ViewMain viewMain = new ViewMain();
@@ -171,6 +168,24 @@ namespace DecideDesktop
                 panelPasswordSignIn.BackColor = Color.Red;
                 panelProfileSignIn.BackColor = Color.Red;
             }
+        }
+
+        internal void GetCoinPrices()
+        {
+            ViewMain.ETHGraphic1h = UserController.GetChartData("ETHUSDT", "1h", 70);
+            ViewMain.BTCGraphic1h = UserController.GetChartData("BTCUSDT", "1h", 70);
+            ViewMain.XRPGraphic1h = UserController.GetChartData("XRPUSDT", "1h", 70);
+            ViewMain.LTCGraphic1h = UserController.GetChartData("LTCUSDT", "1h", 70);
+
+            ViewMain.ETHGraphic15m = UserController.GetChartData("ETHUSDT", "15m", 90);
+            ViewMain.BTCGraphic15m = UserController.GetChartData("BTCUSDT", "15m", 90);
+            ViewMain.XRPGraphic15m = UserController.GetChartData("XRPUSDT", "15m", 90);
+            ViewMain.LTCGraphic15m = UserController.GetChartData("LTCUSDT", "15m", 90);
+
+            ViewMain.ETHGraphic1d = UserController.GetChartData("ETHUSDT", "1d", 50);
+            ViewMain.BTCGraphic1d = UserController.GetChartData("BTCUSDT", "1d", 50);
+            ViewMain.XRPGraphic1d = UserController.GetChartData("XRPUSDT", "1d", 50);
+            ViewMain.LTCGraphic1d = UserController.GetChartData("LTCUSDT", "1d", 50);
         }
 
         private void button1_Click(object sender, EventArgs e)

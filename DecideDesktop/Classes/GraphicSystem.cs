@@ -24,7 +24,7 @@ namespace DecideDesktop.Classes
         }
         public GraphicSystem() { }
 
-        internal void GraphicsDraw(List<float> GraphicsData)
+        internal void GraphicsDraw(List<float> GraphicsData, string interval = "1h")
         {
             SeriesCollection series = new SeriesCollection();
             ChartValues<float> ContValues = new ChartValues<float>();
@@ -34,39 +34,120 @@ namespace DecideDesktop.Classes
             var unixNowTime = ((DateTimeOffset)nowTime).ToUnixTimeSeconds();
             dates.Add(unixNowTime);
 
-            for (int i = 0; i < GraphicsData.Count + 1; i++)
+            switch (interval)
             {
-                dates.Add(dates[i] - 3600);
+                case "1h":
+                    {
+                        for (int i = 0; i < GraphicsData.Count + 1; i++)
+                        {
+                            dates.Add(dates[i] - 3600);
+                        }
+
+                        for (int i = GraphicsData.Count - 1; i >= 0; i--)
+                        {
+                            Times.Add(ConvertFromUnixTimestamp(dates[0] - i * 3600).ToString());
+                        }
+                        for (int i = 0; i < GraphicsData.Count; i++)
+                        {
+                            ContValues.Add((float)GraphicsData[i]);
+                        }
+
+                        Graphic.AxisX.Clear();
+
+                        Graphic.AxisX.Add(new Axis()
+                        {
+                            Title = "Time",
+                            Labels = Times,
+                        });
+
+                        LineSeries line = new LineSeries();
+
+                        line.Title = "";
+                        line.Values = ContValues;
+                        var converter = new System.Windows.Media.BrushConverter();
+                        var Brush = converter.ConvertFromString("#FFF2A7");
+                        line.Foreground = Brush as System.Windows.Media.Brush;
+
+                        series.Add(line);
+
+                        Graphic.Series = series;
+                        break;
+                    }
+                case "15m":
+                    {
+                        for (int i = 0; i < GraphicsData.Count + 1; i++)
+                        {
+                            dates.Add(dates[i] - 900);
+                        }
+
+                        for (int i = GraphicsData.Count - 1; i >= 0; i--)
+                        {
+                            Times.Add(ConvertFromUnixTimestamp(dates[0] - i * 900).ToString());
+                        }
+                        for (int i = 0; i < GraphicsData.Count; i++)
+                        {
+                            ContValues.Add((float)GraphicsData[i]);
+                        }
+
+                        Graphic.AxisX.Clear();
+
+                        Graphic.AxisX.Add(new Axis()
+                        {
+                            Title = "Time",
+                            Labels = Times,
+                        });
+
+                        LineSeries line = new LineSeries();
+
+                        line.Title = "";
+                        line.Values = ContValues;
+                        var converter = new System.Windows.Media.BrushConverter();
+                        var Brush = converter.ConvertFromString("#FFF2A7");
+                        line.Foreground = Brush as System.Windows.Media.Brush;
+
+                        series.Add(line);
+
+                        Graphic.Series = series;
+                        break;
+                    }
+                case "1d":
+                    {
+                        for (int i = 0; i < GraphicsData.Count + 1; i++)
+                        {
+                            dates.Add(dates[i] - 86400);
+                        }
+
+                        for (int i = GraphicsData.Count - 1; i >= 0; i--)
+                        {
+                            Times.Add(ConvertFromUnixTimestamp(dates[0] - i * 86400).ToString());
+                        }
+                        for (int i = 0; i < GraphicsData.Count; i++)
+                        {
+                            ContValues.Add((float)GraphicsData[i]);
+                        }
+
+                        Graphic.AxisX.Clear();
+
+                        Graphic.AxisX.Add(new Axis()
+                        {
+                            Title = "Time",
+                            Labels = Times,
+                        });
+
+                        LineSeries line = new LineSeries();
+
+                        line.Title = "";
+                        line.Values = ContValues;
+                        var converter = new System.Windows.Media.BrushConverter();
+                        var Brush = converter.ConvertFromString("#FFF2A7");
+                        line.Foreground = Brush as System.Windows.Media.Brush;
+
+                        series.Add(line);
+
+                        Graphic.Series = series;
+                        break;
+                    }
             }
-
-            for (int i = GraphicsData.Count - 1; i >= 0; i--)
-            {
-                Times.Add(ConvertFromUnixTimestamp(dates[0] - i * 3600).ToString());
-            }
-            for (int i = 0; i < GraphicsData.Count; i++)
-            {
-                ContValues.Add((float)GraphicsData[i]);
-            }
-
-            Graphic.AxisX.Clear();
-
-            Graphic.AxisX.Add(new Axis()
-            {
-                Title = "Time",
-                Labels = Times,
-            });
-
-            LineSeries line = new LineSeries();
-
-            line.Title = "";
-            line.Values = ContValues;
-            var converter = new System.Windows.Media.BrushConverter();
-            var Brush = converter.ConvertFromString("#FFF2A7");
-            line.Foreground = Brush as System.Windows.Media.Brush;         
-
-            series.Add(line);
-
-            Graphic.Series = series;
         }
   
         static DateTime ConvertFromUnixTimestamp(double timestamp)

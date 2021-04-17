@@ -35,17 +35,17 @@ namespace DecideDesktop
 
         private void btn15min_Click(object sender, EventArgs e)
         {
-
+            FormMainGraphic.GraphicsDraw(ViewMain.BTCGraphic15m, "15m");
         }
 
         private void btn1hour_Click(object sender, EventArgs e)
         {
-
+            FormMainGraphic.GraphicsDraw(ViewMain.BTCGraphic1h);
         }
 
         private void btn1day_Click(object sender, EventArgs e)
         {
-
+            FormMainGraphic.GraphicsDraw(ViewMain.BTCGraphic1d, "1d");
         }
     }
 }

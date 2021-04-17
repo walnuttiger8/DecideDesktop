@@ -17,10 +17,21 @@ namespace DecideDesktop
         public static ViewSignIn SignIn = new ViewSignIn();
         public static ViewSignUp SignUp = new ViewSignUp();
         public static FormMain FormMain;
-        internal static List<float> ETHGraphic = new List<float>();
-        internal static List<float> BTCGraphic = new List<float>();
-        internal static List<float> LTCGraphic = new List<float>();
-        internal static List<float> XRPGraphic = new List<float>();
+        internal static List<float> ETHGraphic1h = new List<float>();
+        internal static List<float> BTCGraphic1h = new List<float>();
+        internal static List<float> LTCGraphic1h = new List<float>();
+        internal static List<float> XRPGraphic1h = new List<float>();
+
+        internal static List<float> ETHGraphic15m = new List<float>();
+        internal static List<float> BTCGraphic15m = new List<float>();
+        internal static List<float> LTCGraphic15m = new List<float>();
+        internal static List<float> XRPGraphic15m = new List<float>();
+
+        internal static List<float> ETHGraphic1d = new List<float>();
+        internal static List<float> BTCGraphic1d = new List<float>();
+        internal static List<float> LTCGraphic1d = new List<float>();
+        internal static List<float> XRPGraphic1d = new List<float>();
+
         internal static int userId;
         internal static User thisUser;
         public ViewMain()
@@ -61,7 +72,7 @@ namespace DecideDesktop
         private void button2_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic);
+            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic1h);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -87,19 +98,19 @@ namespace DecideDesktop
         private void button5_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic);
+            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic1h);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.FormMainGraphic.GraphicsDraw(ETHGraphic);
+            FormMain.FormMainGraphic.GraphicsDraw(ETHGraphic1h);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.FormMainGraphic.GraphicsDraw(LTCGraphic);
+            FormMain.FormMainGraphic.GraphicsDraw(LTCGraphic1h);
         }
 
         private void picExit_Click(object sender, EventArgs e)
@@ -233,7 +244,7 @@ namespace DecideDesktop
             openChildForm(new FormMain());
             showSubMenu(panelMenuSubmenu);
             showSubMenu(panelCurrencySubmenu);
-            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic);
+            FormMain.FormMainGraphic.GraphicsDraw(BTCGraphic1h);
             FormProfile.ViewMain = this;
         }
         private Form activeForm = null;
@@ -269,7 +280,7 @@ namespace DecideDesktop
         private void btnXRP_Click(object sender, EventArgs e)
         {
             openChildForm(new FormMain());
-            FormMain.FormMainGraphic.GraphicsDraw(XRPGraphic);
+            FormMain.FormMainGraphic.GraphicsDraw(XRPGraphic1h);
         }
 
         private void btnXRP_MouseMove(object sender, MouseEventArgs e)
