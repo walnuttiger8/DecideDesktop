@@ -159,10 +159,10 @@ namespace DecideDesktop
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private LiveCharts.WinForms.CartesianChart Graphic;
         private System.Windows.Forms.Button btnlive;
         private System.Windows.Forms.Button btn1day;
         private System.Windows.Forms.Button btn1hour;
         private System.Windows.Forms.Button btn15min;
+        public LiveCharts.WinForms.CartesianChart Graphic;
     }
 }
