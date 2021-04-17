@@ -19,7 +19,7 @@ namespace DecideDesktop
 
         private void labelTopUp_Click(object sender, EventArgs e)
         {
-            labelTopUp.Text = "";
+            textBoxTopUp.Text = "";
         }
 
         private void labelTopUp_MouseLeave(object sender, EventArgs e)

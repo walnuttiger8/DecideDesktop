@@ -302,19 +302,26 @@ namespace DecideDesktop
                 {
                     return;
                 }
-                if (float.Parse(price) > coin.Price)
+                try
                 {
-                    //↓ ↑
-                    
-                    Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.IndianRed));
-                    Prices[i].Invoke(new Action(() => Prices[i].Text = "↓ " + coin.Price));
+                    if (float.Parse(price) > coin.Price)
+                    {
+                        //↓ ↑
+
+                        Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.IndianRed));
+                        Prices[i].Invoke(new Action(() => Prices[i].Text = "↓ " + coin.Price));
+                    }
+                    if (float.Parse(price) < coin.Price)
+                    {
+                        //↓ ↑
+
+                        Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.LightGreen));
+                        Prices[i].Invoke(new Action(() => Prices[i].Text = "↑ " + coin.Price));
+                    }
                 }
-                if (float.Parse(price) < coin.Price)
+                catch (Exception e)
                 {
-                    //↓ ↑
-                    
-                    Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.LightGreen));
-                    Prices[i].Invoke(new Action(() => Prices[i].Text = "↑ " + coin.Price));
+                    return;
                 }
             }
         }

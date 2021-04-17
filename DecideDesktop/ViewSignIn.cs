@@ -159,6 +159,8 @@ namespace DecideDesktop
                     ViewMain viewMain = new ViewMain();
 
                     viewMain.Show();
+                    textBoxSignInPassword.Text = "";
+                    textBoxSignInProfile.Text = "";
                     this.Visible = false;
                     SignUp.Visible = false;
                 }
