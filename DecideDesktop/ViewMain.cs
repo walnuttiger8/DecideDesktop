@@ -237,7 +237,8 @@ namespace DecideDesktop
         private void ViewMain_Load(object sender, EventArgs e)
         {
             timer1.Start();
-             Coints = new List<Label>()
+
+            Coints = new List<Label>()
             {
                 labelConstBTC,labelConstETH,labelConstLTC,labelConstXRP
             };
@@ -316,6 +317,7 @@ namespace DecideDesktop
         private void UpdatePanel()
         {
             for (int i = 0; i < Coints.Count; i++)
+
             {
                 String symbol = Coints[i].Text;
                 Coin coin = UserController.GetCoin(symbol + "USDT");
