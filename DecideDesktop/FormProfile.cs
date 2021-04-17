@@ -22,7 +22,7 @@ namespace DecideDesktop
    
         private void label1_Click(object sender, EventArgs e)
         {
-            if (comboBoxChoiseCurrency.Items.Count == 0)
+            if (comboBoxChoiseCurrency.Items.Count == 0 || comboBoxChoiseCurrency.SelectedItem == null)
             {
 
             }

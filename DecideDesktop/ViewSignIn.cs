@@ -112,7 +112,7 @@ namespace DecideDesktop
         {
             try
             {
-                System.Diagnostics.Process.Start("https://kartli.ch/ru/");
+                System.Diagnostics.Process.Start("https://damir6608.github.io/DesideSite.github.io/");
             }
             catch (Exception ex)
             {
@@ -179,15 +179,10 @@ namespace DecideDesktop
             ViewMain.XRPGraphic1h = UserController.GetChartData("XRPUSDT", "1h", 70);
             ViewMain.LTCGraphic1h = UserController.GetChartData("LTCUSDT", "1h", 70);
 
-            ViewMain.ETHGraphic15m = UserController.GetChartData("ETHUSDT", "15m", 90);
             ViewMain.BTCGraphic15m = UserController.GetChartData("BTCUSDT", "15m", 90);
-            ViewMain.XRPGraphic15m = UserController.GetChartData("XRPUSDT", "15m", 90);
-            ViewMain.LTCGraphic15m = UserController.GetChartData("LTCUSDT", "15m", 90);
 
-            ViewMain.ETHGraphic1d = UserController.GetChartData("ETHUSDT", "1d", 50);
             ViewMain.BTCGraphic1d = UserController.GetChartData("BTCUSDT", "1d", 50);
-            ViewMain.XRPGraphic1d = UserController.GetChartData("XRPUSDT", "1d", 50);
-            ViewMain.LTCGraphic1d = UserController.GetChartData("LTCUSDT", "1d", 50);
+
         }
 
         private void button1_Click(object sender, EventArgs e)

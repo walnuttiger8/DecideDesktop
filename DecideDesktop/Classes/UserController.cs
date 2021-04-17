@@ -233,7 +233,8 @@ namespace DecideDesktop.Classes
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                return float.Parse(JsonResult["results"].ToString());
+                var Balance = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+                return float.Parse(Balance["balance"].ToString());
             }
             else
             {
@@ -252,7 +253,8 @@ namespace DecideDesktop.Classes
 
             if (Convert.ToInt32(JsonResult["success"]) == 1)
             {
-                return float.Parse(JsonResult["results"].ToString());
+                var Balance = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonResult["results"].ToString());
+                return float.Parse(Balance["balance"].ToString());
             }
             else
             {

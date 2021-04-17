@@ -309,39 +309,48 @@ namespace DecideDesktop
         }
         private void UpdatePanel()
         {
-            for (int i = 0; i < Coints.Count; i++)
+            try
             {
-                String symbol = Coints[i].Text;
-                Coin coin = UserController.GetCoin(symbol + "USDT");
-                string price = Prices[i].Text.Replace('.', ',');
-                price = price.Replace('↓', ' ');
-                price = price.Replace('↑', ' ');
-                if (price == "")
+                List<string> symbols = new List<string>();
+                foreach (Label label in Coints)
                 {
-                    return;
+                    symbols.Add(label.Text + "USDT");
                 }
-                try
+                float balance = UserController.GetOverallBalance(userId);
+                float profit = UserController.GetUserProfit(userId);
+                profit = (float)Math.Round(profit, 3);
+                labelBalance.Invoke(new Action(() => labelBalance.Text = $"Баланс: {balance}$"));
+                labelProfite.Invoke(new Action(() => labelProfite.Text = $"Прибыль: {profit}$"));
+                List<Coin> coins = UserController.GetCoinPrices(symbols);
+                for (int i = 0; i < coins.Count; i++)
                 {
-                    if (float.Parse(price) > coin.Price)
+                    string oldPrice = Prices[i].Text.Replace('.', ',');
+                    oldPrice = oldPrice.Replace('↓', ' ');
+                    oldPrice = oldPrice.Replace('↑', ' ');
+                    if (oldPrice == "")
                     {
-                        //↓ ↑
-
+                        return;
+                    }
+                    if (float.Parse(oldPrice) > coins[i].Price)
+                    {
                         Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.IndianRed));
-                        Prices[i].Invoke(new Action(() => Prices[i].Text = "↓ " + coin.Price));
+                        Prices[i].Invoke(new Action(() => Prices[i].Text = "↓ " + coins[i].Price));
                     }
-                    if (float.Parse(price) < coin.Price)
+                    else
                     {
-                        //↓ ↑
-
                         Prices[i].Invoke(new Action(() => Prices[i].ForeColor = Color.LightGreen));
-                        Prices[i].Invoke(new Action(() => Prices[i].Text = "↑ " + coin.Price));
+                        Prices[i].Invoke(new Action(() => Prices[i].Text = "↑ " + coins[i].Price));
                     }
+
                 }
-                catch (Exception e)
-                {
-                    return;
-                }
+                
+                
             }
+            catch (Exception e)
+            {
+                return;
+            }
+            
         }
     }
 }
